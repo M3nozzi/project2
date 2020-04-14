@@ -62,7 +62,7 @@ router.get("/login", (req, res, next) => {
     res.render("login-form"); }); 
    
    router.post("/login", passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "/places",
     failureRedirect: "/login",
     failureFlash: true,
     passReqToCallback: true 
@@ -72,5 +72,13 @@ router.get("/login", (req, res, next) => {
    router.get("/places", ensureLogin.ensureLoggedIn(), (req, res) => {
     res.render("places", { user: req.user });
   });
+
+
+  router.get("/logout", (req, res) => {
+    req.logout();
+    res.redirect("/login");
+  });
+
+
 
 module.exports = router;

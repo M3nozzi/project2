@@ -13,11 +13,12 @@ const placesSchema = new Schema({
     path: String, 
     originalName: String
 }, 
-     { timestamps: {
-        createdAt: 'created_at',
-        updatedAt: 'updated_at'
-      }
-})
+//      { timestamps: {
+//         createdAt: 'created_at',
+//         updatedAt: 'updated_at'
+//       }
+// }
+)
 
 placesSchema.index({
     location: '2dsphere'
