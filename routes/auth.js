@@ -22,9 +22,12 @@ router.get("/signup", (req, res, next) => {
 });
 
 //signup POST
-router.post("/signup", (req, res, next) => {
+router.post("/signup", uploadCloud.single('photo'), (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
+    const email = req.body.email;
+    const path = req.file.url;
+    const originalName = req.file.originalname;
  
 console.log(req.body)
   if (username === "" || password === "") {
@@ -43,8 +46,12 @@ console.log(req.body)
     const hashPass = bcrypt.hashSync(password, salt);
 
     const newUser = new User({
-      username,
-      password: hashPass
+        username,
+        email,
+        password: hashPass,
+        path,
+        originalName,
+      
     });
 
     newUser.save((err) => {
@@ -77,9 +84,10 @@ router.get("/places", ensureLogin.ensureLoggedIn(), (req, res) => {
        
     Place
     .find().sort({name: 1})
-    .then(places => {
+        .then(places => {
+      
       res.render('places', {
-        places
+        user: req.user, places
       });
     })
     .catch(error => console.log(error));
@@ -89,7 +97,7 @@ router.get("/places", ensureLogin.ensureLoggedIn(), (req, res) => {
 router.get('/places/:id', (req, res) => {
     Place
       .findById(req.params.id)
-      .then(places => {
+        .then(places => {
         res.render('place-details', {
           places
         });
@@ -181,6 +189,80 @@ router.get('/places/:id', (req, res) => {
           path: req.file.url,
           originalName: req.file.originalname,
           
+        }
+      }, {
+        new: true
+      })
+      .then(response => {
+        console.log(response);
+        res.redirect("places");
+      })
+      .catch(error => console.log(error));
+  });
+
+
+  // implement the delete route and redirect to /places
+
+router.get('/place-delete/:placeId', (req, res) => {
+    const {
+      placeId
+    } = req.params;
+  
+    Place.findByIdAndRemove(placeId).then(response => {
+      res.redirect('/places');
+    }).catch(error => console.log(error));
+  });
+
+//   Profile route
+router.get("/profile/:userId", ensureLogin.ensureLoggedIn(), (req, res) => {
+    
+    const { userId }  = req.params
+    User
+    .findById(userId)
+        .then(user => {
+            console.log(user)
+        res.render('profile', {
+          user
+        });
+      })
+      .catch(error => console.log(error));
+  });
+
+
+//PROFILE EDIT ROUTE
+
+router.get('/profile-edit/:userId',(req, res) => {
+    const {
+      userId
+    } = req.params;
+    User
+      .findById(userId)
+      .then(user => {
+        
+        res.render('profile-edit', user);
+      })
+      .catch(error => console.log(error));
+});
+  
+  // POST edit
+  router.post('/profile-edit', uploadCloud.single('photo'), (req, res) => {
+    const {
+      username,
+      email,
+    
+    } = req.body;
+      
+    const {
+      userId
+    } = req.query;
+      
+
+   User.findByIdAndUpdate(userId, {
+        $set: {
+          username,
+          email,
+          path: req.file.url,
+          originalName: req.file.originalname, 
         }
       }, {
         new: true
