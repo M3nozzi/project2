@@ -44,7 +44,7 @@ app.use(session({
 // social login
 // const FacebookStrategy = require("passport-facebook").Strategy;
 // const FacebookTokenStrategy = require('passport-facebook-token');
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const GoogleStrategy = require("passport-google-oauth2").Strategy;
 
 mongoose
   .connect('mongodb://localhost/spotsport', {useNewUrlParser: true, useUnifiedTopology: true})
