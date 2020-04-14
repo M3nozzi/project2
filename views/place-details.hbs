@@ -1,0 +1,11 @@
+<span><a href="/places">Back</a></span><br>
+
+{{#with places}}
+<h1>{{this.name}}</h1>
+<h4>type: {{type}}</h4>
+{{#if path}}
+<img src='{{path}}' alt='{{title}}'>
+{{/if}}
+<p>{{description}}</p><a href="/place-edit/{{_id}}"><button>edit</button></a>
+<!-- colocar mapa -->
+{{/with}}

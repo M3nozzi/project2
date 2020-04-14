@@ -4,3 +4,13 @@
   </nav>
 
 <p>{{#if user}}Hey {{user.username}}, {{/if}}Welcome to Places!</p>
+
+<ul>
+  {{#each places}}
+  <li>
+<a href="/places/{{_id}}">{{name}}</a>
+  <a href="/place-delete/{{_id}}">| DEL</a>
+  </li>
+  {{/each}}
+</ul>
+<button><a href="/place-add">New Place</a></button>
