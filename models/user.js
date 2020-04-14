@@ -19,9 +19,9 @@ const userSchema = new Schema({
 //   confirmationCode: String,
 //   googleID: String,
 //   facebookID: String,
-//   email: String,
-//   path: String,
-//   originalName: String,
+  email: String,
+  path: String,
+  originalName: String,
 },
 //   {
 //     timestamps: true
