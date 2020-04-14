@@ -1,0 +1,28 @@
+<span><a href="/places">Back</a></span><br>
+<h1>add new place</h1>
+
+<form action="/place-add" method="POST" enctype="multipart/form-data">
+  <label for="name">Name:
+    <input type="text" name="name">
+  </label><br>
+
+  <label for="type">Type:
+    <input type="text" name="type">
+  </label><br>
+  
+  <label for="location">Location:
+    <input type="text" name="latitude" placeholder="enter latitude">
+    <input type="text" name="longitude" placeholder="enter longitude">
+  </label><br>
+
+  <label for="description">Description:
+    <input type="text" name="description">
+  </label><br>
+
+
+  <label for="photo">Photo:
+    <input type="file" name="photo">
+  </label><br>
+
+  <button type="submit">ADD</button>
+</form>
