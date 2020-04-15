@@ -50,11 +50,17 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 
-//basic auth middleware setup
+// static assets - public folder config
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
+app.use(express.static(path.join(__dirname, 'public')));
+// app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+
+//Enable authentication using session + passport
 app.use(session({ 
-    secret: "sport", 
+    secret: "spotsport", 
     resave: true, 
-    saveUninitialized: true,
+  saveUninitialized: true,
  }));
 
  passport.serializeUser((user, cb) => {
@@ -128,11 +134,7 @@ app.use(passport.session());
 
 
 
-// static assets - public folder config
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
-app.use(express.static(path.join(__dirname, 'public')));
-// app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+
 
 
 
