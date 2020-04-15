@@ -1,0 +1,14 @@
+<span><a href="/places">Back</a></span><br>
+
+{{!-- {{#with users}} --}}
+<h1>username:{{user.username}}</h1>
+<h3>Name:{{user.firstName}} {{user.lastName}}</h3>
+<h4>email: {{user.email}}</h4>
+{{!-- {{#if path}} --}}
+<img src='{{user.path}}' alt='{{title}}'>
+{{!-- {{/if}} --}}
+<br>
+<a href="/profile-edit/{{user._id}}"><button>EDIT</button></a>
+<br><br>
+<a href="/password-edit/{{user._id}}"><button>CHANGE PASSWORD</button></a>
+{{!-- {{/with}} --}}
