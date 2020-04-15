@@ -17,7 +17,7 @@ router.get('/api', (req, res, next) => {
   Place.find()
     .then(allPlacesFromDB => {
       res.json(allPlacesFromDB)
+
     })
     .catch(error => console.log(error))
 })
-
