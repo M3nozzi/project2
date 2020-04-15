@@ -1,14 +1,15 @@
 function startMap() {
-    const ironhackBCN = {
-        lat: 41.3977381,
-        lng: 2.190471916};
+    const ironhackSP = {
+        lat: -23.561585,
+        lng: -46.660191};
     const map = new google.maps.Map(
       document.getElementById('map'),
       {
-        zoom: 7,
-        center: ironhackBCN
+        zoom: 12,
+        center: ironhackSP
       }
     );
   }
   
   startMap();
+
