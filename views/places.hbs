@@ -14,7 +14,7 @@
      <a href="/profile/{{user._id}}">Profile</a>
   </nav>
 
-<p>{{#if user}}Hey {{user.username}}, {{/if}}Welcome to Places!</p>
+<p>{{#if user}}Hey {{user.firstName}}, {{/if}}Welcome to Places!</p>
 
 <ul>
   {{#each places}}
@@ -29,4 +29,5 @@
 
 
 
-<div id="map"></div>  
+
+<div id="map"></div> 

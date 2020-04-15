@@ -1,14 +1,32 @@
 <h1>Edit Profile</h1>
 <form action="/profile-edit?userId={{_id}}" method="POST" enctype="multipart/form-data">
+ <label for="firstName">First Name:
+    <input type="text" name="firstName" value="{{firstName}}">
+  </label>
+  <br>
+  <br>
+  <label for="lastName">Last Name:
+    <input type="text" name="lastName" value="{{lastName}}">
+  </label>
+  <br>
+  <br>
   <label for="username">Username:
     <input type="text" name="username" value="{{username}}">
-  </label><br>
+  </label>
+  <br>
+  <br>
   <label for="email">email:
     <input type="text" name="email" value="{{email}}">
-  </label><br>
+  </label>
+  <br>
+  <br>
 <img src='{{path}}' alt='{{title}}'>
+<br>
+<br>
   <label for="photo">Change Profile`s photo:
-    <input type="file" name="photo" >
-  </label><br>
+    <input type="file" name="photo" required>
+  </label>
+  <br>
+  <br>
   <button type="submit">EDIT</button>
 </form>

@@ -23,6 +23,8 @@ router.get("/signup", (req, res, next) => {
 
 //signup POST
 router.post("/signup", uploadCloud.single('photo'), (req, res, next) => {
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
     const username = req.body.username;
     const password = req.body.password;
     const email = req.body.email;
@@ -45,7 +47,9 @@ console.log(req.body)
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
 
-    const newUser = new User({
+      const newUser = new User({
+        firstName,
+        lastName,
         username,
         email,
         password: hashPass,
@@ -245,8 +249,10 @@ router.get('/profile-edit/:userId',(req, res) => {
 });
   
   // POST edit
-  router.post('/profile-edit', uploadCloud.single('photo'), (req, res, next) => {
-    const {
+  router.post('/profile-edit', uploadCloud.single('photo'), (req, res) => {
+      const {
+      firstName,
+      lastName,
       username,
       email,
     
@@ -258,7 +264,9 @@ router.get('/profile-edit/:userId',(req, res) => {
       
 
    User.findByIdAndUpdate(userId, {
-        $set: {
+       $set: {
+          firstName,
+          lastName,
           username,
           email,
           path: req.file.url,
@@ -275,6 +283,43 @@ router.get('/profile-edit/:userId',(req, res) => {
   });
 
 
+  //PASSWORD EDIT ROUTE GET
+ router.get('/password-edit/:userId',(req, res) => {
+    const {
+      userId
+    } = req.params;
+    User
+      .findById(userId)
+      .then(user => {
+        
+        res.render('password-edit', user);
+      })
+      .catch(error => console.log(error));
+});
+  
+  // PASSWORD EDIT ROUTE POST 
+router.post('/password-edit', (req, res) => {
+    const password = req.body.password;
+    const salt = bcrypt.genSaltSync(bcryptSalt);
+    const hashPass = bcrypt.hashSync(password, salt);
+    
+    const {
+      userId
+    } = req.query;
+      
+    User.findByIdAndUpdate({ userId }, {
+       $set: {
+        password:hashPass,
+        }
+      }, {
+        new: true
+      })
+      .then(response => {
+        console.log(response);
+        res.redirect("places");
+      })
+      .catch(error => console.log(error));
+  });
 
 
 //LOGOUT
@@ -285,11 +330,8 @@ router.get('/profile-edit/:userId',(req, res) => {
 
 
 
-
-
-
-
-
-
-
 module.exports = router;
+
+
+
+      
