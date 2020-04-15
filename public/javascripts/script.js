@@ -1,5 +1,5 @@
 
-  const center = {
+  let center = {
     lat: -23.561526,
     lng: -46.660127
   };
@@ -13,12 +13,15 @@
 
       
     );
-
+  
+    
     axios
       .get('/api')
       .then(data => {
+        // console.log(data.data[1]._id)
         data.data.forEach(element => {
           new google.maps.Marker({
+            animation:google.maps.Animation.BOUNCE,
             position: {
               lat: element.location.coordinates[1],
               lng: element.location.coordinates[0]
@@ -32,7 +35,11 @@
   
       })
       .catch(err => console.log(err))
-    
-  }//closes startMap function
 
+  }
+
+  
+  
   startMap()
+
+
