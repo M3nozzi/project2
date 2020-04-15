@@ -1,6 +1,12 @@
-Private page
-{{#if user}}
-  <div>
-    <a href="/">Index</a>
-  </div>
-{{/if}}
+<span><a href="/places">Back</a></span><br>
+
+{{!-- {{#with users}} --}}
+<h1>{{user.username}}</h1>
+<h4>email: {{user.email}}</h4>
+{{!-- {{#if path}} --}}
+<img src='{{user.path}}' alt='{{title}}'>
+{{!-- {{/if}} --}}
+
+<a href="/profile-edit/{{user._id}}"><button>EDIT</button></a>
+
+{{!-- {{/with}} --}}
