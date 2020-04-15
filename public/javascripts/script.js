@@ -10,8 +10,10 @@
         zoom: 13,
         center: center
       }
+
+      
     );
-  
+
     axios
       .get('/api')
       .then(data => {
@@ -21,12 +23,16 @@
               lat: element.location.coordinates[1],
               lng: element.location.coordinates[0]
             },
+            animation: google.maps.Animation.BOUNCE,
             map: map,
-            title: element[name]
+            title: element[name],
           });
-        });
+        }); 
+          
+  
       })
       .catch(err => console.log(err))
-  }
-  
+    
+  }//closes startMap function
+
   startMap()
