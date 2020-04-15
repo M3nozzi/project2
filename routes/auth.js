@@ -245,7 +245,7 @@ router.get('/profile-edit/:userId',(req, res) => {
 });
   
   // POST edit
-  router.post('/profile-edit', uploadCloud.single('photo'), (req, res) => {
+  router.post('/profile-edit', uploadCloud.single('photo'), (req, res, next) => {
     const {
       username,
       email,
@@ -282,6 +282,13 @@ router.get('/profile-edit/:userId',(req, res) => {
     req.logout();
     res.redirect("/");
   });
+
+
+
+
+
+
+
 
 
 
