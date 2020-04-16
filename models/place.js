@@ -5,7 +5,7 @@ const placesSchema = new Schema({
     name: String,
     description: String,
     type: { type: [String] },
-    // address: String,
+    address: String,
     location: {
         type: {
             type: String
