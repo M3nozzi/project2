@@ -298,16 +298,19 @@ router.get('/profile-edit/:userId',(req, res) => {
 });
   
   // PASSWORD EDIT ROUTE POST 
-router.post('/password-edit', (req, res) => {
+router.post('/password-edit/:userId', (req, res) => {
     const password = req.body.password;
+    console.log(req.body)
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
+    console.log(salt)
+    console.log(hashPass)
     
     const {
       userId
-    } = req.query;
+    } = req.params;
       
-    User.findByIdAndUpdate({ userId }, {
+    User.findByIdAndUpdate({ _id: userId }, {
        $set: {
         password:hashPass,
         }
@@ -316,7 +319,7 @@ router.post('/password-edit', (req, res) => {
       })
       .then(response => {
         console.log(response);
-        res.redirect("places");
+        res.redirect("/places");
       })
       .catch(error => console.log(error));
   });
