@@ -1,3 +1,4 @@
+window.onload = () => {startMap() }
 let center = {
     lat: -23.561526,
     lng: -46.660127
@@ -13,15 +14,12 @@ let center = {
       
     );
   
-    console.log(window.location.href)
     let page = window.location.href.split('/');
     page = page[page.length -1];
-    console.log(page)
     
     axios
       .get('/api')
       .then(data => {
-        console.log(data.data[1]._id)
         data.data.forEach(element => {
           if (page === element._id) {
           new google.maps.Marker({
@@ -52,19 +50,26 @@ let center = {
   }
 
  
-  startMap()
+  
+ 
+  
+  const address = document.getElementById('address');
+const geocoder = new google.maps.Geocoder();
 
-// const geocoder = new google.maps.Geocoder();
+// if (address) {
+//   address.onclick = function () {
+//     console.log("oi")
+//     geocodeAddress(geocoder, map);
+//   };
+// }
 
-// document.getElementById('submit').addEventListener('click', function () {
-//   geocodeAddress(geocoder, map);
-// });
 
 // function geocodeAddress(geocoder, resultsMap) {
+//   console.log("ai")
 //   let address = document.getElementById('address').value;
 
-//   geocoder.geocode({ 'address': address }, function (results, status) {
-
+//   geocoder.geocode({ 'address': address }, function (results, status) { 
+//     console.log(results)
 //     if (status === 'OK') {
 //       resultsMap.setCenter(results[0].geometry.location);
 //       let marker = new google.maps.Marker({
@@ -78,3 +83,28 @@ let center = {
 //     }
 //   });
 // }
+
+
+
+if (address) {
+  address.addEventListener('focusout', function () {
+    console.log("ola")
+    geocodeAddress(geocoder);
+  });
+}
+function geocodeAddress(geocoder) {
+  let myAddress = address.value;
+  geocoder.geocode({ 'address': myAddress }, function (results, status) {
+    if (status === 'OK') {
+      console.log(results)
+      document.getElementById('latitude').value = results[0].geometry.location.lat();
+      document.getElementById('longitude').value = results[0].geometry.location.lng();
+    } 
+    else {
+      // alert('Geocode was not successful for the following reason: ' + status);
+      alert('Insert a valid address')};
+  });
+}
+
+
+
