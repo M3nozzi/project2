@@ -322,6 +322,18 @@ router.post('/password-edit', (req, res) => {
   });
 
 
+   // PROFILE implement the delete route and redirect to /home
+
+router.get('/profile-delete/:userId', (req, res) => {
+  const {
+    userId
+  } = req.params;
+
+  User.findByIdAndRemove(userId).then(response => {
+    res.redirect('/');
+  }).catch(error => console.log(error));
+});
+
 //LOGOUT
   router.get("/logout", (req, res) => {
     req.logout();
