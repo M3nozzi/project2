@@ -111,9 +111,6 @@ router.get('/places/:id', (req, res) => {
 
 
 
-
-
-
   //place-add get
   router.get("/place-add", ensureLogin.ensureLoggedIn(), (req, res) => {
     res.render("place-add", { user: req.user });
@@ -129,6 +126,7 @@ router.get('/places/:id', (req, res) => {
       name,
       description,
       type,
+      address,
       latitude,
       longitude
     } = req.body;
@@ -142,6 +140,7 @@ router.get('/places/:id', (req, res) => {
         name,
         description,
         type,
+        address,
         location,
         path: req.file.url,
         originalName: req.file.originalname
