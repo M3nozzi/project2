@@ -12,9 +12,9 @@
     <input type="text" name="longitude" value="{{location.coordinates.[0]}}">
   </label><br> --}}
    <label for="address">Address:
-          <input id="latitude" type="text" name="latitude" hidden>
-          <input id="longitude" type="text" name="longitude" hidden>
-          <input id="address" type="address" name="address" value="{{address}} required>
+          <input id="latitude" type="text" name="latitude" value="{{location.coordinates.[1]}}" hidden>
+          <input id="longitude" type="text" name="longitude" value="{{location.coordinates.[0]}}" hidden>
+          <input id="address" type="address" name="address" value="{{address}}" required>
   </label> 
   <label for="description">Description:
     <input type="text" name="description" value="{{description}}">
@@ -24,5 +24,5 @@
     <input type="file" name="photo" required>
   </label>
   <br>
-  <button type="submit">EDIT</button>
+  <button id="submit" type="submit">EDIT</button>
 </form>

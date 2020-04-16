@@ -129,6 +129,7 @@ router.get('/places/:id', (req, res) => {
       name,
       description,
       type,
+      address,
       latitude,
       longitude
     } = req.body;
@@ -142,6 +143,7 @@ router.get('/places/:id', (req, res) => {
         name,
         description,
         type,
+        address,
         location,
         path: req.file.url,
         originalName: req.file.originalname
@@ -171,6 +173,7 @@ router.get('/places/:id', (req, res) => {
     const {
       name,
       type,
+      address,
       description,
       latitude,
       longitude
@@ -188,6 +191,7 @@ router.get('/places/:id', (req, res) => {
         $set: {
           name,
           type,
+          address,
           description,
           location,
           path: req.file.url,
@@ -300,11 +304,9 @@ router.get('/profile-edit/:userId',(req, res) => {
   // PASSWORD EDIT ROUTE POST 
 router.post('/password-edit/:userId', (req, res) => {
     const password = req.body.password;
-    console.log(req.body)
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
-    console.log(salt)
-    console.log(hashPass)
+   
     
     const {
       userId
@@ -318,7 +320,6 @@ router.post('/password-edit/:userId', (req, res) => {
         new: true
       })
       .then(response => {
-        console.log(response);
         res.redirect("/places");
       })
       .catch(error => console.log(error));
