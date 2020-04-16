@@ -29,7 +29,7 @@ const GoogleStrategy = require("passport-google-oauth2").Strategy;
 
 
 mongoose
-  .connect('mongodb://localhost/spotsport', {useNewUrlParser: true, useUnifiedTopology: true})
+  .connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
