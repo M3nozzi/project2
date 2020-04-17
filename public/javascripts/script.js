@@ -6,7 +6,7 @@ let center = {
   function startMap() {
     const map = new google.maps.Map(
       document.getElementById('map'), {
-        zoom: 13,
+        zoom: 12,
         center: center
       }
     );
@@ -23,7 +23,7 @@ let center = {
               lat: element.location.coordinates[1],
               lng: element.location.coordinates[0]
             },
-            map: map,
+            map:map,
             title: element.name,
           });
         }
