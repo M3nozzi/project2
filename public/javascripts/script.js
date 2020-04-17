@@ -3,20 +3,15 @@ let center = {
     lat: -23.561526,
     lng: -46.660127
   };
-  
   function startMap() {
     const map = new google.maps.Map(
       document.getElementById('map'), {
         zoom: 13,
         center: center
       }
-
-      
     );
-  
     let page = window.location.href.split('/');
     page = page[page.length -1];
-    
     axios
       .get('/api')
       .then(data => {
@@ -46,20 +41,11 @@ let center = {
         });
       })
       .catch(err => console.log(err))
-
   }
-
- 
-  
- 
-  
   const address = document.getElementById('address');
 const geocoder = new google.maps.Geocoder();
-
-
 if (address) {
   address.addEventListener('focusout', function () {
-    console.log("ola")
     geocodeAddress(geocoder);
   });
 }
@@ -70,12 +56,10 @@ function geocodeAddress(geocoder) {
       console.log(results)
       document.getElementById('latitude').value = results[0].geometry.location.lat();
       document.getElementById('longitude').value = results[0].geometry.location.lng();
-    } 
+    }
     else {
       // alert('Geocode was not successful for the following reason: ' + status);
       alert('Insert a valid address')};
   });
 }
-
-
 

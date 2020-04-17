@@ -18,9 +18,9 @@ const userSchema = new Schema({
 //     enum: ['Pending Confirmation', 'Active'],
 //     default: 'Pending Confirmation'
 //   },
-//   confirmationCode: String,
-//   googleID: String,
-//   facebookID: String,
+  confirmationCode: String,
+  googleID: String,
+  facebookID: String,
   email: String,
   path: String,
   originalName: String,

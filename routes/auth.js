@@ -111,9 +111,6 @@ router.get('/places/:id', (req, res) => {
 
 
 
-
-
-
   //place-add get
   router.get("/place-add", ensureLogin.ensureLoggedIn(), (req, res) => {
     res.render("place-add", { user: req.user });
@@ -207,6 +204,43 @@ router.get('/places/:id', (req, res) => {
       })
       .catch(error => console.log(error));
   });
+
+//PLACE REVIEW
+
+router.get('/place-review/:placeId',(req, res) => {
+  const {
+    placeId
+  } = req.params;
+  Place
+    .findById(placeId)
+    .then(place => {
+      
+      res.render('place-review', place);
+    })
+    .catch(error => console.log(error));
+});
+
+
+router.post('/place-review', (req, res, next) => {
+  const { username, comments } = req.body;
+
+  const {
+    placeId
+  } = req.query;
+
+  Place.findByIdAndUpdate(placeId, { $push: { reviews: { username, comments }}})
+    .then(place => {
+    console.log(placeId)
+    res.redirect('places')
+  })
+  .catch((error) => {
+    console.log(error)
+  })
+});
+
+
+
+
 
 
   // implement the delete route and redirect to /places
@@ -337,6 +371,51 @@ router.get('/profile-delete/:userId', (req, res) => {
     res.redirect('/');
   }).catch(error => console.log(error));
 });
+
+// SOCIAL LOGIN GOOGLE
+
+// one way out to google 
+router.get(
+  "/auth/google",
+  passport.authenticate("google", {
+    scope: [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email"
+    ]
+  })
+);
+
+// one way back from google
+router.get(
+  "/auth/google/callback",
+  passport.authenticate("google", {
+    successRedirect: "/places",
+    failureRedirect: "/login" // here you would redirect to the login page using traditional login approach
+  })
+);
+
+// SOCIAL LOGIN FACEBOOK
+
+// one way out to facebook
+router.get("/auth/facebook",
+  passport.authenticate("facebook",
+    {
+      data: [
+        {
+          "permission": "public_profile",
+          "status": "granted"
+        }
+      ]
+    }));
+
+  // one way back from facebook
+router.get("/auth/facebook/callback",
+  passport.authenticate("facebook", {
+    successRedirect: "/places",
+    failureRedirect: "/login"
+  }),
+);
+
 
 //LOGOUT
   router.get("/logout", (req, res) => {
