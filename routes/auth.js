@@ -335,7 +335,7 @@ router.get('/profile-delete/:userId', (req, res) => {
   }).catch(error => console.log(error));
 });
 
-// SOCIAL LOGIN
+// SOCIAL LOGIN GOOGLE
 
 // one way out to google 
 router.get(
@@ -356,6 +356,29 @@ router.get(
     failureRedirect: "/login" // here you would redirect to the login page using traditional login approach
   })
 );
+
+// SOCIAL LOGIN FACEBOOK
+
+// one way out to facebook
+router.get("/auth/facebook",
+  passport.authenticate("facebook",
+    {
+      data: [
+        {
+          "permission": "public_profile",
+          "status": "granted"
+        }
+      ]
+    }));
+
+  // one way back from facebook
+router.get("/auth/facebook/callback",
+  passport.authenticate("facebook", {
+    successRedirect: "/places",
+    failureRedirect: "/login"
+  }),
+);
+
 
 //LOGOUT
   router.get("/logout", (req, res) => {

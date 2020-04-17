@@ -23,7 +23,7 @@ const Place =require('./models/place')
 const bcrypt = require('bcrypt');
 
 // social login
-// const FacebookStrategy = require("passport-facebook").Strategy;
+const FacebookStrategy = require("passport-facebook").Strategy;
 // const FacebookTokenStrategy = require('passport-facebook-token');
 const GoogleStrategy = require("passport-google-oauth2").Strategy;
 
@@ -95,6 +95,7 @@ app.use(session({
     });
   }));
 
+//GOOGLE
 
   passport.use(
     new GoogleStrategy({
@@ -133,6 +134,48 @@ app.use(session({
     )
   );
 
+//FACEBOOK
+passport.use(new FacebookStrategy({
+  clientID: process.env.FACEBOOK_APP_ID,
+  clientSecret: process.env.FACEBOOK_APP_SECRET,
+  callbackURL: "/auth/facebook/callback"
+},
+function(accessToken, refreshToken, profile, done) {
+  
+console.log("Facebook account details:", profile);
+  let name = profile.displayName.split(' ')
+  let first = name[0]
+  let last = name[name.length - 1]
+  let username = first + '.' + last
+  
+User.findOne({
+    facebookID: profile.id
+  })
+  .then(user => {
+    if (user) {
+      done(null, user);
+      return;
+    }
+
+    User.create({
+      firstName: first,
+      lastName: last,
+      username: username.toLowerCase(),
+      email: 'edit and insert your e-mail',
+      facebookID: profile.id,
+      path:process.env.DEFAULT_IMAGE,
+      })
+      .then(newUser => {
+        done(null, newUser);
+      })
+      .catch(err => done(err)); // closes User.create()
+  })
+  .catch(err => done(err)); // closes User.findOne()
+}
+)
+);
+
+
 app.use(passport.initialize()); 
 app.use(passport.session());
 
@@ -140,9 +183,7 @@ app.use(passport.session());
  
 const index = require('./routes/index');
 const auth = require('./routes/auth');
-// const api = require('./routes/api');
 app.use('/', auth);
-// app.use('/api', api);
 app.use('/', index);
 
 

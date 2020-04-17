@@ -20,7 +20,7 @@ const userSchema = new Schema({
 //   },
 //   confirmationCode: String,
   googleID: String,
-//   facebookID: String,
+  facebookID: String,
   email: String,
   path: String,
   originalName: String,
