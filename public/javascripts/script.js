@@ -3,16 +3,15 @@ let center = {
     lat: -23.561526,
     lng: -46.660127
   };
-
-function startMap() {
-    
-   map = new google.maps.Map(
-      
+  function startMap() {
+    const map = new google.maps.Map(
+      document.getElementById('map'), {
+        zoom: 13,
+        center: center
+      }
     );
-  
     let page = window.location.href.split('/');
     page = page[page.length -1];
-    
     axios
       .get('/api')
       .then(data => {
@@ -42,46 +41,9 @@ function startMap() {
         });
       })
       .catch(err => console.log(err))
-
   }
-
- 
-  
- 
-  
   const address = document.getElementById('address');
 const geocoder = new google.maps.Geocoder();
-
-// if (address) {
-//   address.onclick = function () {
-//     console.log("oi")
-//     geocodeAddress(geocoder, map);
-//   };
-// }
-
-
-// function geocodeAddress(geocoder, resultsMap) {
-//   console.log("ai")
-//   let address = document.getElementById('address').value;
-
-//   geocoder.geocode({ 'address': address }, function (results, status) { 
-//     console.log(results)
-//     if (status === 'OK') {
-//       resultsMap.setCenter(results[0].geometry.location);
-//       let marker = new google.maps.Marker({
-//         map: resultsMap,
-//         position: results[0].geometry.location
-//       });
-//       document.getElementById('latitude').value = results[0].geometry.location.lat();
-//       document.getElementById('longitude').value = results[0].geometry.location.lng();
-//     } else {
-//       alert('Geocode was not successful for the following reason: ' + status);
-//     }
-//   });
-// }
-
-
-
 if (address) {
   address.addEventListener('focusout', function () {
     console.log("ola")
@@ -95,12 +57,10 @@ function geocodeAddress(geocoder) {
       console.log(results)
       document.getElementById('latitude').value = results[0].geometry.location.lat();
       document.getElementById('longitude').value = results[0].geometry.location.lng();
-    } 
+    }
     else {
       // alert('Geocode was not successful for the following reason: ' + status);
       alert('Insert a valid address')};
   });
 }
-
-
 
