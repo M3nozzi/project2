@@ -46,7 +46,6 @@ let center = {
 const geocoder = new google.maps.Geocoder();
 if (address) {
   address.addEventListener('focusout', function () {
-    console.log("ola")
     geocodeAddress(geocoder);
   });
 }
