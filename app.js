@@ -23,13 +23,13 @@ const Place =require('./models/place')
 const bcrypt = require('bcrypt');
 
 // social login
-// const FacebookStrategy = require("passport-facebook").Strategy;
+const FacebookStrategy = require("passport-facebook").Strategy;
 // const FacebookTokenStrategy = require('passport-facebook-token');
 const GoogleStrategy = require("passport-google-oauth2").Strategy;
 
 
 mongoose
-  .connect('mongodb://localhost/spotsport', {useNewUrlParser: true, useUnifiedTopology: true})
+  .connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -95,57 +95,95 @@ app.use(session({
     });
   }));
 
+//GOOGLE
 
-  // passport.use(
-//     new GoogleStrategy({
-//         clientID: process.env.GOOGLE_CLIENT_ID,
-//         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-//         callbackURL: "/auth/google/callback"
-//       },
-//       (accessToken, refreshToken, profile, done) => {
+  passport.use(
+    new GoogleStrategy({
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL: "/auth/google/callback"
+      },
+      (accessToken, refreshToken, profile, done) => {
        
-//         console.log("Google account details:", profile);
+        console.log("Google account details:", profile);
   
-//         User.findOne({
-//             googleID: profile.id
-//           })
-//           .then(user => {
-//             if (user) {
-//               done(null, user);
-//               return;
-//             }
+        User.findOne({
+            googleID: profile.id
+          })
+          .then(user => {
+            if (user) {
+              done(null, user);
+              return;
+            }
   
-//             User.create({
-//                 username: profile.id,
-//                 googleID: profile.id
-//               })
-//               .then(newUser => {
-//                 done(null, newUser);
-//               })
-//               .catch(err => done(err)); // closes User.create()
-//           })
-//           .catch(err => done(err)); // closes User.findOne()
-//       }
-//     )
-//   );
+            User.create({
+              firstName: profile.given_name,
+              lastName: profile.family_name,
+              username: profile.given_name,
+              email: profile.email,
+              googleID: profile.id,
+              path: profile.picture,
+              })
+              .then(newUser => {
+                done(null, newUser);
+              })
+              .catch(err => done(err)); // closes User.create()
+          })
+          .catch(err => done(err)); // closes User.findOne()
+      }
+    )
+  );
+
+//FACEBOOK
+passport.use(new FacebookStrategy({
+  clientID: process.env.FACEBOOK_APP_ID,
+  clientSecret: process.env.FACEBOOK_APP_SECRET,
+  callbackURL: "/auth/facebook/callback"
+},
+function(accessToken, refreshToken, profile, done) {
+  
+console.log("Facebook account details:", profile);
+  let name = profile.displayName.split(' ')
+  let first = name[0]
+  let last = name[name.length - 1]
+  let username = first + '.' + last
+  
+User.findOne({
+    facebookID: profile.id
+  })
+  .then(user => {
+    if (user) {
+      done(null, user);
+      return;
+    }
+
+    User.create({
+      firstName: first,
+      lastName: last,
+      username: username.toLowerCase(),
+      email: 'edit and insert your e-mail',
+      facebookID: profile.id,
+      path:process.env.DEFAULT_IMAGE,
+      })
+      .then(newUser => {
+        done(null, newUser);
+      })
+      .catch(err => done(err)); // closes User.create()
+  })
+  .catch(err => done(err)); // closes User.findOne()
+}
+)
+);
+
 
 app.use(passport.initialize()); 
 app.use(passport.session());
 
 
-
-
-
-
-
-
-  
  
 const index = require('./routes/index');
 const auth = require('./routes/auth');
-// const api = require('./routes/api');
 app.use('/', auth);
-// app.use('/api', api);
 app.use('/', index);
 
 

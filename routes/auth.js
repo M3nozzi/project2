@@ -335,6 +335,51 @@ router.get('/profile-delete/:userId', (req, res) => {
   }).catch(error => console.log(error));
 });
 
+// SOCIAL LOGIN GOOGLE
+
+// one way out to google 
+router.get(
+  "/auth/google",
+  passport.authenticate("google", {
+    scope: [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email"
+    ]
+  })
+);
+
+// one way back from google
+router.get(
+  "/auth/google/callback",
+  passport.authenticate("google", {
+    successRedirect: "/places",
+    failureRedirect: "/login" // here you would redirect to the login page using traditional login approach
+  })
+);
+
+// SOCIAL LOGIN FACEBOOK
+
+// one way out to facebook
+router.get("/auth/facebook",
+  passport.authenticate("facebook",
+    {
+      data: [
+        {
+          "permission": "public_profile",
+          "status": "granted"
+        }
+      ]
+    }));
+
+  // one way back from facebook
+router.get("/auth/facebook/callback",
+  passport.authenticate("facebook", {
+    successRedirect: "/places",
+    failureRedirect: "/login"
+  }),
+);
+
+
 //LOGOUT
   router.get("/logout", (req, res) => {
     req.logout();

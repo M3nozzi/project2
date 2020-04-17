@@ -19,8 +19,8 @@ const userSchema = new Schema({
 //     default: 'Pending Confirmation'
 //   },
 //   confirmationCode: String,
-//   googleID: String,
-//   facebookID: String,
+  googleID: String,
+  facebookID: String,
   email: String,
   path: String,
   originalName: String,
