@@ -205,6 +205,43 @@ router.get('/places/:id', (req, res) => {
       .catch(error => console.log(error));
   });
 
+//PLACE REVIEW
+
+router.get('/place-review/:placeId',(req, res) => {
+  const {
+    placeId
+  } = req.params;
+  Place
+    .findById(placeId)
+    .then(place => {
+      
+      res.render('place-review', place);
+    })
+    .catch(error => console.log(error));
+});
+
+
+router.post('/place-review', (req, res, next) => {
+  const { username, comments } = req.body;
+
+  const {
+    placeId
+  } = req.query;
+
+  Place.findByIdAndUpdate(placeId, { $push: { reviews: { username, comments }}})
+    .then(place => {
+    console.log(placeId)
+    res.redirect('places')
+  })
+  .catch((error) => {
+    console.log(error)
+  })
+});
+
+
+
+
+
 
   // implement the delete route and redirect to /places
 

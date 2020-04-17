@@ -8,8 +8,17 @@
 <img src='{{path}}' alt='{{title}}'>
 {{/if}}
 <p>{{description}}</p>
+<br>
 <a href="/place-edit/{{_id}}"><button>edit</button></a>
+<a href="/place-review/{{_id}}"><button>Create a review</button></a>
 <br>
 <br>
 <div id="map"></div> 
 {{/with}}
+<h2>Reviews</h2>
+{{#each places.reviews}}
+<div class="review-item">
+  <p>{{comments}}</p>
+  <span>{{username}}</span>
+</div>
+{{/each}}

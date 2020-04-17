@@ -2,3 +2,18 @@
     height: 500px;
     width: 100%;
 }
+
+.review-item {
+    border-bottom: 1px solid grey;
+    margin: 10px 0;
+    padding-bottom: 10px;
+  }
+  
+  .review-item p {
+    margin-bottom: 0;
+  }
+  
+  .review-item span {
+    font-size: 10px;
+    color: grey;
+  }
