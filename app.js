@@ -96,50 +96,47 @@ app.use(session({
   }));
 
 
-  // passport.use(
-//     new GoogleStrategy({
-//         clientID: process.env.GOOGLE_CLIENT_ID,
-//         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-//         callbackURL: "/auth/google/callback"
-//       },
-//       (accessToken, refreshToken, profile, done) => {
+  passport.use(
+    new GoogleStrategy({
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL: "/auth/google/callback"
+      },
+      (accessToken, refreshToken, profile, done) => {
        
-//         console.log("Google account details:", profile);
+        console.log("Google account details:", profile);
   
-//         User.findOne({
-//             googleID: profile.id
-//           })
-//           .then(user => {
-//             if (user) {
-//               done(null, user);
-//               return;
-//             }
+        User.findOne({
+            googleID: profile.id
+          })
+          .then(user => {
+            if (user) {
+              done(null, user);
+              return;
+            }
   
-//             User.create({
-//                 username: profile.id,
-//                 googleID: profile.id
-//               })
-//               .then(newUser => {
-//                 done(null, newUser);
-//               })
-//               .catch(err => done(err)); // closes User.create()
-//           })
-//           .catch(err => done(err)); // closes User.findOne()
-//       }
-//     )
-//   );
+            User.create({
+              firstName: profile.given_name,
+              lastName: profile.family_name,
+              username: profile.given_name,
+              email: profile.email,
+              googleID: profile.id,
+              path: profile.picture,
+              })
+              .then(newUser => {
+                done(null, newUser);
+              })
+              .catch(err => done(err)); // closes User.create()
+          })
+          .catch(err => done(err)); // closes User.findOne()
+      }
+    )
+  );
 
 app.use(passport.initialize()); 
 app.use(passport.session());
 
 
-
-
-
-
-
-
-  
  
 const index = require('./routes/index');
 const auth = require('./routes/auth');
