@@ -161,7 +161,7 @@ User.findOne({
       firstName: first,
       lastName: last,
       username: username.toLowerCase(),
-      email: 'edit and insert your e-mail',
+      email: 'Edit and insert your e-mail',
       facebookID: profile.id,
       path:process.env.DEFAULT_IMAGE,
       })
