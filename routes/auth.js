@@ -191,8 +191,8 @@ router.get('/places/:id', (req, res) => {
           address,
           description,
           location,
-          path: req.file.url,
-          originalName: req.file.originalname,
+          // path: req.file.url,
+          // originalName: req.file.originalname,
           
         }
       }, {
