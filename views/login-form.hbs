@@ -1,4 +1,4 @@
- <span><a href="/">Home</a></span>
+ {{!-- <span><a href="/">Home</a></span>
  <br>
  <br>
  
@@ -27,44 +27,46 @@
   <br>
   <br>
   <a href="/auth/facebook">Login with Facebook</a>
-</form>
+</form> --}}
 
-{{!-- <h2>Spot Sport</h2>
+<h2>Spot Sport</h2>
+<script src="https://kit.fontawesome.com/0cc4f904e8.js" crossorigin="anonymous"></script>
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form action="#">
+		<form action="/signup" method="POST" enctype="multipart/form-data">
 			<h1>Create Account</h1>
 			<div class="social-container">
-				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+				<a href="/auth/facebook" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="/auth/google" class="social"><i class="fab fa-google"></i></a>
+       
 			</div>
-			<span>or use your email for registration</span>
-			<input type="text" placeholder="Name" />
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
+			{{!-- <span>or use your email for registration</span> --}}
+			<input id="firstName" type="text" name="firstName" placeholder="Vito" required>
+      <input id="lastName" type="text" name="lastName" placeholder="Corleone" required>
+      <input id="username" type="text" name="username" placeholder="vito.corleone" required>
+			<input id="email" type="text" name="email" placeholder="vito@corleone.com" required>
+			<input id="password" type="password" name="password" placeholder="********" required>
+      <input type="file" name="photo" id="photo" required>
 			<button>Sign Up</button>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
-		<form action="#">
+		<form action="/login" method="post">
 			<h1>Sign in</h1>
 			<div class="social-container">
-				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+				<a href="/auth/facebook" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="/auth/google" class="social"><i class="fab fa-google"></i></a>
 			</div>
 			<span>or use your account</span>
-			<input type="username" placeholder="username" />
-			<input type="password" placeholder="Password" />
-			<a href="#">Forgot your password?</a>
+			<input type="username" name="username" placeholder="username" />
+			<input type="password" name="password" placeholder="Password" />
 			<button>Sign In</button>
 		</form>
 	</div>
 	<div class="overlay-container">
 		<div class="overlay">
 			<div class="overlay-panel overlay-left">
-				<h1>Welcome Back!</h1>
+				<h1>Welcome Back to Spot Sport!</h1>
 				<p>To keep connected with us please login with your personal info</p>
 				<button class="ghost" id="signIn">Sign In</button>
 			</div>
@@ -76,15 +78,6 @@
 		</div>
 	</div>
 </div>
-
-<footer>
-	<p>
-		Created with <i class="fa fa-heart"></i> by
-		<a target="_blank" href="https://florin-pop.com">Florin Pop</a>
-		- Read how I created this and how you can join the challenge
-		<a target="_blank" href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">here</a>.
-	</p>
-</footer>
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
@@ -173,7 +166,7 @@ input {
 	background-color: #eee;
 	border: none;
 	padding: 12px 15px;
-	margin: 8px 0;
+	margin: 4px 0;
 	width: 100%;
 }
 
@@ -312,6 +305,7 @@ input {
 	margin: 0 5px;
 	height: 40px;
 	width: 40px;
+
 }
 
 footer {
@@ -342,7 +336,7 @@ footer a {
 </style>
 
 <script>
-  const signUpButton = document.getElementById('signUp');
+const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container');
 
@@ -353,4 +347,4 @@ signUpButton.addEventListener('click', () => {
 signInButton.addEventListener('click', () => {
 	container.classList.remove("right-panel-active");
 });
-</script> --}}
+</script>
