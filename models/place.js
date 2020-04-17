@@ -13,7 +13,13 @@ const placesSchema = new Schema({
         coordinates: [Number]
     },//closes location
     path: String, 
-    originalName: String
+    originalName: String,
+    reviews:[ 
+        {
+          username: String,
+          comments: String
+        } 
+      ]
 }, 
 //      { timestamps: {
 //         createdAt: 'created_at',

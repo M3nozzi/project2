@@ -24,7 +24,6 @@ const bcrypt = require('bcrypt');
 
 // social login
 const FacebookStrategy = require("passport-facebook").Strategy;
-// const FacebookTokenStrategy = require('passport-facebook-token');
 const GoogleStrategy = require("passport-google-oauth2").Strategy;
 
 
@@ -106,7 +105,8 @@ app.use(session({
       (accessToken, refreshToken, profile, done) => {
        
         console.log("Google account details:", profile);
-  
+       
+        let username = profile.given_name + '.' + profile.family_name
         User.findOne({
             googleID: profile.id
           })
@@ -119,7 +119,7 @@ app.use(session({
             User.create({
               firstName: profile.given_name,
               lastName: profile.family_name,
-              username: profile.given_name,
+              username: username.toLowerCase(),
               email: profile.email,
               googleID: profile.id,
               path: profile.picture,
