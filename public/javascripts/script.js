@@ -56,35 +56,6 @@ let center = {
   const address = document.getElementById('address');
 const geocoder = new google.maps.Geocoder();
 
-// if (address) {
-//   address.onclick = function () {
-//     console.log("oi")
-//     geocodeAddress(geocoder, map);
-//   };
-// }
-
-
-// function geocodeAddress(geocoder, resultsMap) {
-//   console.log("ai")
-//   let address = document.getElementById('address').value;
-
-//   geocoder.geocode({ 'address': address }, function (results, status) { 
-//     console.log(results)
-//     if (status === 'OK') {
-//       resultsMap.setCenter(results[0].geometry.location);
-//       let marker = new google.maps.Marker({
-//         map: resultsMap,
-//         position: results[0].geometry.location
-//       });
-//       document.getElementById('latitude').value = results[0].geometry.location.lat();
-//       document.getElementById('longitude').value = results[0].geometry.location.lng();
-//     } else {
-//       alert('Geocode was not successful for the following reason: ' + status);
-//     }
-//   });
-// }
-
-
 
 if (address) {
   address.addEventListener('focusout', function () {
