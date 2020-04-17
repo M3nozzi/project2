@@ -111,9 +111,6 @@ router.get('/places/:id', (req, res) => {
 
 
 
-
-
-
   //place-add get
   router.get("/place-add", ensureLogin.ensureLoggedIn(), (req, res) => {
     res.render("place-add", { user: req.user });
