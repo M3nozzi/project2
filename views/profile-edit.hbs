@@ -1,14 +1,14 @@
  <span><a href="/profile/{{_id}}">Back</a></span><br>
 <h1>Edit Profile</h1>
 <form action="/profile-edit?userId={{_id}}" method="POST" enctype="multipart/form-data">
- <label for="firstName">First Name:
+ <label for="firstName">Name:
     <input type="text" name="firstName" value="{{firstName}}">
   </label>
   <br>
   <br>
-  <label for="lastName">Last Name:
+  {{!-- <label for="lastName">Last Name:
     <input type="text" name="lastName" value="{{lastName}}">
-  </label>
+  </label> --}}
   <br>
   <br>
   <label for="username">Username:
