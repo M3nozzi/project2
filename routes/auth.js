@@ -103,7 +103,7 @@ router.get('/places/:id', (req, res) => {
       .findById(req.params.id)
         .then(places => {
         res.render('place-details', {
-          places
+          places, user: req.user
         });
       })
       .catch(error => console.log(error));

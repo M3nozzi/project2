@@ -1,24 +1,24 @@
 <span><a href="/places">Back</a></span><br>
-<h1>edit place</h1>
-<form action="/place-edit?placeId={{_id}}" method="POST" enctype="multipart/form-data">
-  <label for="name">Name:
-    <input type="text" name="name" value="{{name}}">
+<h1 class="edit-h1">edit place</h1>
+<form class="edit-form"action="/place-edit?placeId={{_id}}" method="POST" enctype="multipart/form-data">
+  <label class='edit-label' for="name">Name:
+    <input class='edit-input' type="text" name="name" value="{{name}}">
   </label><br>
-  <label for="type">Type:
-    <input type="text" name="type" value="{{type}}">
+  <label class='edit-label' for="type">Type:
+    <input class='edit-input' type="text" name="type" value="{{type}}">
   </label><br>
 
-   <label for="address">Address:
-          <input id="latitude" type="text" name="latitude" value="{{location.coordinates.[1]}}" hidden>
+   <label class='edit-label' for="address">Address:
+          <input  id="latitude" type="text" name="latitude" value="{{location.coordinates.[1]}}" hidden>
           <input id="longitude" type="text" name="longitude" value="{{location.coordinates.[0]}}" hidden>
           <input id="address" type="address" name="address" value="{{address}}" required>
   </label> 
-  <label for="description">Description:
+  <label  class='edit-label'for="description">Description:
     <input type="text" name="description" value="{{description}}">
   </label><br>
 <img src='{{path}}' alt='{{title}}'>
 
-  <label for="photo">Change photo:
+  <label class='edit-label' for="photo">Change photo:
     <input type="file" name="photo" required>
   </label>
   <br>
