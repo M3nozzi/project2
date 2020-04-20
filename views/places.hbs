@@ -24,10 +24,10 @@
    {{#each places}}
 
   <div class="card ">
-  <div class="card_image"> <img src='{{path}}' alt='{{title}}'> </div>
+  <div class="card_image"> <img class="img-card"src='{{path}}' alt='{{title}}'> </div>
   <div class="card_title title-white">
     <p class="places-title"><a href="/places/{{_id}}">{{name}}</a></p>
-    <button> <a href="/place-delete/{{_id}}">DELETE</a></button>
+    <button class="btn-delete"> <a href="/place-delete/{{_id}}">DELETE</a></button>
   </div>
   </div>
    {{/each}}
@@ -55,6 +55,8 @@
 
 
 <style>
+
+ 
   .cards-list {
   width: 100%;
   display: flex;
@@ -70,6 +72,7 @@
 box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
   cursor: pointer;
   transition: 0.4s;
+  filter:grayscale(100%)
 }
 
 .card .card_image {
@@ -88,32 +91,33 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
 .card .card_title {
   text-align: center;
   border-radius: 0px 0px 40px 40px;
-  font-family: sans-serif;
+ font-family:'Montserrat', sans-serif;
   font-weight: bold;
-  font-size: 10px;
-  margin-top: -80px;
+  font-size: 20px;
+  margin-top: -120px;
   height: 40px;
+  text-decoration:none;
 }
 
 .card:hover {
   transform: scale(0.9, 0.9);
   box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
     -5px -5px 30px 15px rgba(0,0,0,0.22);
+    filter:grayscale(0%);
+    
 }
 
-.title-white {
-  color: white;
-}
-
-.title-black {
-  color: black;
+.places-title a:hover{
+  color:black;
 }
 .places-title a{
 font-family:'Montserrat', sans-serif;
-color:black;
 text-decoration:none;
+color:white;
 
 }
+
+
 @media all and (max-width: 500px) {
   .card-list {
     /* On small screens, we are no longer using row direction but column */
