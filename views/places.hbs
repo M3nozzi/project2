@@ -1,12 +1,22 @@
-
-
-  <nav>
-    <a href="/">Home</a>
-    <a href="logout">Logout</a>
-     <a href="/profile/{{user._id}}">Profile</a>
+<header>
+     <p class="header-p">{{#if user}}Hey {{user.firstName}}, {{/if}}Welcome to SpotSports!</p>
+  <nav class="header-nav">
+     <ul class="header-ul">
+        <li class="header-li">
+    <a  class="header-a" href="/">Home</a>
+    </li>
+    <li class="header-li">
+     <a class="header-a" href="/profile/{{user._id}}">Profile</a>
+    </li>
+    <li class="header-li">
+     <a class="btn header-a" href="logout" title="logout">Logout</a>
+     </li>
+     </ul>
   </nav>
-
-<p>{{#if user}}Hey {{user.firstName}}, {{/if}}Welcome to SpotSports!</p>
+</header>
+<br>
+<br>
+<br>
 
 <ul>
   {{#each places}}
@@ -23,6 +33,8 @@
 <br>
 <br>
 <div id="map"></div> 
-<br>
+
+
+<link rel="stylesheet" href="/stylesheets/places.css" />
 
 
