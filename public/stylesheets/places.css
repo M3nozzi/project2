@@ -14,13 +14,8 @@ box-sizing: border-box;
 
 body {
 font-family: 'Montserrat', sans-serif;
-margin: 0;
 background-color: white;
--webkit-background-size: cover;
--moz-background-size: cover;
-background-size: cover;
 color: #0a0a0b;
-overflow: hidden;
 }
 .header-ul, .header-nav{
 list-style: none;
