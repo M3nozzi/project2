@@ -34,7 +34,7 @@ list-style: none;
 padding: 0;
 }
 a {
-color:black;
+color:white;
 text-decoration: none;
 cursor: pointer;
 opacity: 0.9;
@@ -75,7 +75,7 @@ header nav li:last-child{
 margin-right: 0;  
 }
 a.btn {
-color:black;
+color:white;
 padding: 10px;
 border: 1px solid rgba(255,255,255,0.5);
 -webkit-transition: all 0.2s;
