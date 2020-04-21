@@ -39,7 +39,7 @@ let center = {
         }
           else if (page === "places") {
           
-            let contentString = `<div>${element.name}</div><h3>${element.address}</h3><a href="/places/${element._id}">More Details</a><div><img src="${element.path}"></div>`;
+            let contentString = `<div class="inforWindow"><h1 class="element-name">${element.name}</h1><h3 class="element-address">${element.address}</h3><img class="element-img" src="${element.path}"><br><a class="element-a" href="/places/${element._id}"><b>More Details</b></a></div>`;
 
             let infoWindow = new google.maps.InfoWindow({
               content: contentString

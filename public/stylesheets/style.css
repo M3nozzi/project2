@@ -18,9 +18,21 @@
     color: grey;
   }
 
+  .element-img{
+    width:150px;
+    height:100px;
+  }
 
+  .element-a{
+    text-decoration:none;
+    font-family:'Montserrat', sans-serif;
+    color:black;
+    font-size: 13px;
+  }
   
-  
+  .element-a:hover{
+    color: red;
+  }
 
 
 
