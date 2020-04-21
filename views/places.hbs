@@ -30,21 +30,53 @@
    {{#each places}}
 
   <div class="card ">
-  <div class="card_image"> <img class="img-card"src='{{path}}' alt='{{title}}'> </div>
+  <div class="card_image"> 
+    <button class="delete"> <a class="a-delete" href="/place-delete/{{_id}}">X</a></button>
+    <img class="img-card"src='{{path}}' alt='{{title}}'> 
+  
+   </div>
   <div class="card_title title-white">
     <p class="places-title"><a href="/places/{{_id}}">{{name}}</a></p>
-    <button id="delete"> <a href="/place-delete/{{_id}}">DELETE</a></button>
   </div>
   </div>
    {{/each}}
 
 </div>
-
+<br>
+<br>
 <div id="map"></div> 
 
 <link rel="stylesheet" href="/stylesheets/places.css" />
 
 <style>
+
+.a-delete{
+  text-decoration:none;
+  color:black;
+}
+.a-delete:hover{ 
+  color:white;
+}
+  .delete {
+	border-radius:42px;
+	border:1px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:10px;
+	font-weight:bold;
+	padding:6px 8px;
+	text-decoration:none;
+
+}
+.delete:hover {
+	background-color:#ce0100;
+}
+.delete:active {
+	position:relative;
+	top:1px;
+}
   .places-titleADD{
     margin-top: -50px;
   }
@@ -55,6 +87,7 @@ color:black;
 text-decoration:none;
 font-size: 80px;
 }
+
   .cards-list {
   width: 100%;
   display: flex;
@@ -110,6 +143,9 @@ color:white;
 text-decoration:none;
 }
 
+.places-title {
+  margin-top: 50px;
+}
 
 @media all and (max-width: 500px) {
   .card-list {
