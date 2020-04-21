@@ -4,8 +4,20 @@
   <label class='edit-label' for="name">Name:
     <input class='edit-input' type="text" name="name" value="{{name}}">
   </label><br>
-  <label class='edit-label' for="type">Type:
+  {{!-- <label class='edit-label' for="type">Type:
     <input class='edit-input' type="text" name="type" value="{{type}}">
+  </label><br> --}}
+  <label class="edit-label" for="type">Type:
+           <select name="type" value={{type}} id="" onchange="">
+              <option value="general">General</option>
+              <option value="basketball">Basketball</option>
+                <option value="soccer">Soccer</option>
+                <option value="gym">Gym</option>
+                <option value="volley">Volley</option>
+                <option value="tennis">Tennis</option>
+                <option value="trekking">Trekking</option>
+                <option value="hiking">Hiking</option>
+            </select>
   </label><br>
 
    <label class='edit-label' for="address">Address:
