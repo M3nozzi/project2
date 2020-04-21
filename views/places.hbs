@@ -17,10 +17,16 @@
 <br>
 <br>
 <br>
-<button id="add"><a href="/place-add">New Place</a></button>
 
+{{!-- <img class="myImage" src="https://res.cloudinary.com/menozzi/image/upload/v1587477108/project2/pinAdd_ot0b6z.png"> --}}
   
-  <div class="cards-list">
+  <div class="cards-list" >
+     <div class="card ">
+  <div class="card_image"></div>
+  <div class="card_title">
+    <p class="places-titleADD"><a class="a-addPlace" href="/place-add">+</a></p>
+  </div>
+  </div>
    {{#each places}}
 
   <div class="card ">
@@ -34,29 +40,21 @@
 
 </div>
 
- 
-
-
-
-{{!-- <ul>
-  {{#each places}}
-  <li>
-<a href="/places/{{_id}}">{{name}}</a> &nbsp;
- <button> <a href="/place-delete/{{_id}}">DELETE</a></button>
- <br>
- <br>
-  </li>
-  {{/each}}
-</ul> --}}
-
 <div id="map"></div> 
 
 <link rel="stylesheet" href="/stylesheets/places.css" />
 
-
 <style>
+  .places-titleADD{
+    margin-top: -50px;
+  }
 
- 
+.places-titleADD a{
+font-family:'Montserrat', sans-serif;
+color:black;
+text-decoration:none;
+font-size: 80px;
+}
   .cards-list {
   width: 100%;
   display: flex;
@@ -69,7 +67,7 @@
   width: 150px;
   height: 150px;
   border-radius: 8px;
-box-shadow: 5px 5px 2px 7px rgba(0,0,0,0.25), 
+  box-shadow: 5px 5px 2px 7px rgba(0,0,0,0.25), 
   cursor: pointer;
   transition: 0.4s;
   filter: grayscale(100%);
@@ -112,13 +110,6 @@ color:white;
 text-decoration:none;
 }
 
-#add {
-
-}
-
-#delete {
-  
-}
 
 @media all and (max-width: 500px) {
   .card-list {
