@@ -5,7 +5,10 @@
 -moz-box-sizing: inherit;
 box-sizing: inherit;
 }
-
+*{
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+}
 html {
 -webkit-box-sizing: border-box;
 -moz-box-sizing: border-box;
