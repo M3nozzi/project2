@@ -53,6 +53,7 @@ justify-content: space-between;
 align-items: center;
 color: #fff;
 padding: 10px 100px 0;
+background-color: rgba(0, 0, 0, 0.639);
 }
 header nav ul {
 display: flex;

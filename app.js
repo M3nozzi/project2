@@ -105,8 +105,8 @@ app.use(session({
       (accessToken, refreshToken, profile, done) => {
        
         console.log("Google account details:", profile);
-        let name = profile.given_name + ' ' + profile.family_name;
-        let username = profile.given_name + '.' + profile.family_name;
+       let  name = profile.given_name + ' ' + profile.family_name
+        let username = profile.given_name + '.' + profile.family_name
         User.findOne({
             googleID: profile.id
           })
@@ -118,6 +118,7 @@ app.use(session({
   
             User.create({
               firstName: name,
+              // lastName: profile.family_name,
               username: username.toLowerCase(),
               email: profile.email,
               googleID: profile.id,
@@ -137,9 +138,7 @@ app.use(session({
 passport.use(new FacebookStrategy({
   clientID: process.env.FACEBOOK_APP_ID,
   clientSecret: process.env.FACEBOOK_APP_SECRET,
-  callbackURL: process.env.FACEBOOK_CALLBACK,
-    
-    
+  callbackURL: process.env.FACEBOOK_CALLBACK
 },
 function(accessToken, refreshToken, profile, done) {
   
@@ -159,7 +158,7 @@ User.findOne({
     }
 
     User.create({
-      firstName: name,
+      firstName: name[0]+' '+name[name.length - 1],
       username: username.toLowerCase(),
       email: 'Edit and insert your e-mail',
       facebookID: profile.id,
