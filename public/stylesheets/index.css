@@ -5,15 +5,7 @@
 -moz-box-sizing: inherit;
 box-sizing: inherit;
 }
-/* ::-webkit-input-placeholder {
-color: #56585b;
-}
-::-moz-placeholder {
-color: #56585b;
-}
-:-moz-placeholder {
-color: #56585b;
-} */
+
 html {
 -webkit-box-sizing: border-box;
 -moz-box-sizing: border-box;
@@ -170,7 +162,7 @@ label {
     bottom: 0;
     min-width: 100%;
     min-height: 100%;
-    filter: grayscale(60%);
+    filter: grayscale(0%);
   }
   
   /* Add some content at the bottom of the video/page */
@@ -180,3 +172,7 @@ label {
     padding: 20px;
   }
 
+  #myVideo:after{
+    position:absolute;
+    background-color:rgba(0,0,0,.6);
+  }
