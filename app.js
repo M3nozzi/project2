@@ -105,8 +105,8 @@ app.use(session({
       (accessToken, refreshToken, profile, done) => {
        
         console.log("Google account details:", profile);
-       
-        let username = profile.given_name + '.' + profile.family_name
+        let name = profile.given_name + ' ' + profile.family_name;
+        let username = profile.given_name + '.' + profile.family_name;
         User.findOne({
             googleID: profile.id
           })
@@ -117,8 +117,7 @@ app.use(session({
             }
   
             User.create({
-              firstName: profile.given_name,
-              lastName: profile.family_name,
+              firstName: name,
               username: username.toLowerCase(),
               email: profile.email,
               googleID: profile.id,
@@ -160,8 +159,7 @@ User.findOne({
     }
 
     User.create({
-      firstName: first,
-      lastName: last,
+      firstName: name,
       username: username.toLowerCase(),
       email: 'Edit and insert your e-mail',
       facebookID: profile.id,
