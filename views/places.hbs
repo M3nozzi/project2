@@ -24,7 +24,7 @@
    {{#each places}}
 
   <div class="card ">
-  <div class="card_image"> <img src='{{path}}' alt='{{title}}'> </div>
+  <div class="card_image"> <img class="img-card"src='{{path}}' alt='{{title}}'> </div>
   <div class="card_title title-white">
     <p class="places-title"><a href="/places/{{_id}}">{{name}}</a></p>
     <button id="delete"> <a href="/place-delete/{{_id}}">DELETE</a></button>
@@ -55,6 +55,8 @@
 
 
 <style>
+
+ 
   .cards-list {
   width: 100%;
   display: flex;
@@ -66,8 +68,8 @@
   margin: 30px auto;
   width: 150px;
   height: 150px;
-  border-radius: 40px;
-box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+  border-radius: 8px;
+box-shadow: 5px 5px 2px 7px rgba(0,0,0,0.25), 
   cursor: pointer;
   transition: 0.4s;
   filter: grayscale(100%);
@@ -76,30 +78,31 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
 .card .card_image {
   width: inherit;
   height: inherit;
-  border-radius: 40px;
+  border-radius: 8px;
 }
 
 .card .card_image img {
   width: inherit;
   height: inherit;
-  border-radius: 40px;
+  border-radius: 8px;
   object-fit: cover;
 }
 
 .card .card_title {
   text-align: center;
-  border-radius: 0px 0px 40px 40px;
-  font-family: sans-serif;
+  border-radius: 0px 0px 30px 30px;
+ font-family:'Montserrat', sans-serif;
   font-weight: bold;
   font-size: 20px;
   margin-top: -120px;
   height: 40px;
+  text-decoration:none;
 }
 
 .card:hover {
   transform: scale(0.9, 0.9);
-  box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
-    -5px -5px 30px 15px rgba(0,0,0,0.22);
+  box-shadow: 0px 1px 18px 1px rgba(0,0,0,0.25), 
+    1px 1px 20px 1px rgba(0,0,0,0.22);
     filter: grayscale(0%);
 }
 
