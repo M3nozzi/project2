@@ -345,7 +345,6 @@ router.post('/password-edit/:userId', (req, res) => {
     const password = req.body.password;
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
-   
     
     const {
       userId
