@@ -48,7 +48,7 @@
 
 <div class="div-review">
 {{#with places}}
-<a href="/place-review/{{_id}}"><button>Create a review</button></a>
+<a class="btn-createReview" href="/place-review/{{_id}}"><i class="far fa-comment-dots"></i></a>
 {{/with}}
 <div class="background-div">
 <h2>Reviews</h2>
@@ -90,9 +90,13 @@
 
 <style>
 
+    .btn-createReview{
+        margin-left:1170px;
+    }
+
     .div-icon{
         position:absolute;
-        margin-left:470px;
+        margin-left:520px;
         margin-bottom: -30px;
     }
     i{
@@ -115,8 +119,6 @@
       color:white;
       margin-left:20px;
       margin-top:10px;
-
-
     }
     .review-item{
         margin:20px;
@@ -140,7 +142,7 @@
 
     }
     .img-Places{
-        position:relative
+        position:relative;
         width:500px;
         height:300px;
         margin-left:50px;

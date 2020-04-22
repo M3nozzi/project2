@@ -40,7 +40,7 @@
 <br><br>
 <a href="/password-edit/{{user._id}}"><button>CHANGE PASSWORD</button></a> --}}
 
-    <div class="container-profile">
+    {{!-- <div class="container-profile">
 
 	<div class="profile">
 
@@ -69,31 +69,185 @@
 
 	<div class="profile-bio">
 
-	    <p><span class="profile-real-name">{{user.firstName}}</span> Lorem ipsum dolor sit, amet consectetur adipisicing elit</p>
+	    <p><span class="profile-real-name">{{user.firstName}}</span></p>
 
     </div>
 
+</div> --}}
+<div class="profile-div">
+<figure class="snip0057 blue">
+  <figcaption>
+    <h2><span>{{user.firstName}}</span></h2>
+    <p>{{user.email}}</p>
+    <div class="icons"><a href="/profile-edit/{{user._id}}"><button class="btn-profile profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button></a><a href="/password-edit/{{user._id}}"><button class="btn-profile change-password">CHANGE PASSWORD</button></a><a href="/profile-delete/{{user._id}}"><button class="btn-profile delete-account">DELETE ACCOUNT</button></a></div>
+  </figcaption>
+  <div class="image"><img src='{{user.path}}' alt='{{title}}'></div>
+  <div class="position">username: {{user.username}}</div>
+</figure>
 </div>
-		
+{{!-- </div>
 
-</div>
-
-</div>
+</div> --}}
 
 
 
 <style>
 
-.profile-image img {
-    width:140px;
-    height:160px;
-    border-radius: 50%;
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,200,300,800);
+@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+
+.profile-div {
+margin-left:30%;
+margin-top:40px;
+}
+figure.snip0057 {
+  font-family: 'Raleway', Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  min-width: 380px;
+  max-width: 480px;
+  width: 100%;
+  background: #ffffff;
+  color: #000000;
+}
+figure.snip0057 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
+}
+figure.snip0057 .image {
+  width: 50%;
+  overflow: hidden;
+  z-index: 1;
+  -webkit-transform: skewX(-15deg);
+  transform: skewX(-15deg);
+}
+figure.snip0057 .image img {
+  position: relative;
+  display: block;
+  left: -15%;
+  z-index: 1;
+  -webkit-transform: skew(15deg);
+  transform: skew(15deg);
+}
+figure.snip0057:before {
+  position: absolute;
+  content: '';
+  height: 100%;
+  width: 45%;
+
+  -webkit-transform: skewX(-17deg);
+  transform: skewX(-17deg);
+  -webkit-box-shadow: 15px 0px 25px rgba(0, 0, 0, 0.7);
+  box-shadow: 15px 0px 25px rgba(0, 0, 0, 0.7);
+}
+figure.snip0057 figcaption {
+  padding: 20px 30px 20px 20px;
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  width: 50%;
+}
+figure.snip0057 figcaption h2,
+figure.snip0057 figcaption p {
+  margin: 0;
+  text-align: right;
+  padding: 10px 0;
+  width: 100%;
+}
+figure.snip0057 figcaption h2 {
+  font-size: 1.3em;
+  font-weight: 300;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+figure.snip0057 figcaption h2 span {
+  font-weight: 800;
+}
+figure.snip0057 figcaption p {
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+figure.snip0057 figcaption .icons {
+  width: 100%;
+  text-align: right;
+}
+figure.snip0057 figcaption .icons i {
+  font-size: 26px;
+  padding: 5px;
+  top: 50%;
+  color: #000000;
+  opacity: 0;
+}
+figure.snip0057 figcaption a {
+  opacity: 0.3;
+}
+figure.snip0057 figcaption a:hover {
+  opacity: 0.8;
+}
+figure.snip0057 .position {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: right;
+  padding: 15px 30px;
+  font-size: 0.9em;
+  opacity: 1;
+  font-style: italic;
+  color: #ffffff;
+ 
+}
+figure.snip0057.blue .position {
+  background: #d73851;
+}
+figure.snip0057.red .position {
+  background: #962d22;
+} 
+figure.snip0057.yellow .position {
+  background: #bf6516;
+}
+figure.snip0057:hover figcaption,
+figure.snip0057.hover figcaption {
+  bottom: 40px;
+}
+figure.snip0057:hover .icons i,
+figure.snip0057.hover .icons i {
+  opacity: 1;
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+figure.snip0057:hover:before,
+figure.snip0057.hover:before {
+  -webkit-animation: shadow 0.6s ease-in-out;
+  animation: shadow 0.6s ease-in-out;
+}
+@-webkit-keyframes shadow {
+  0% {
+    left: 0px;
+  }
+  50% {
+    left: -5px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+@keyframes shadow {
+  0% {
+    left: 0px;
+  }
+  50% {
+    left: -5px;
+  }
+  100% {
+    left: 0px;
+  }
 }
 
 
-
-
-.btn {
+.btn-profile {
     display: inline-block;
     font: inherit;
     background: none;
@@ -114,155 +268,23 @@
     margin-left: 30px;
     margin-right:0px;
 }
+
+.change-password:hover{
+    background-color:rgb(42, 33, 33);
+    color:ivory;
+}
 .delete-account{
     font-size: 10px;
     line-height: 1.8;
     border: 0.1rem solid #dbdbdb;
     border-radius: 0.3rem;
     padding: 0 10px;
-    margin-left: 0px;
+    margin-left: 35px;
+    margin-top:15px;
+}
+.delete-account:hover{
+  background-color: crimson;
+  color:white;
 }
 
-
-
-.profile-user-name {
-    display: inline-block;
-    font-size: 30px;
-    font-weight: 300;
-}
-
-.profile-settings-btn {
-    font-size: 2rem;
-    margin-left: 1rem;
-}
-
-.profile{
-    margin-top:100px;
-    margin-left:40%
-}
-
-.profile-bio {
-    font-size: 1.6rem;
-    font-weight: 400;
-    line-height: 1.5;
-    margin-top: 2.3rem;
-}
-
-.profile-real-name,
-.profile-stat-count,
-.profile-edit-btn {
-    font-weight: 600;
-}
-
-.profile-settings-btn {
-    font-size: 2rem;
-    margin-left: 1rem;
-}
-
-.profile-stats {
-    margin-top: 2.3rem;
-}
-
-/* Media Query */
-
-@media screen and (max-width: 40rem) {
-    .profile {
-        display: flex;
-        flex-wrap: wrap;
-        padding: 4rem 0;
-    }
-
-    .profile::after {
-        display: none;
-    }
-
-    .profile-image,
-    .profile-user-settings,
-    .profile-bio,
-    .profile-stats {
-        float: none;
-        width: auto;
-    }
-
-    .profile-image img {
-        width: 7.7rem;
-    }
-
-    .profile-user-settings {
-        flex-basis: calc(100% - 10.7rem);
-        display: flex;
-        flex-wrap: wrap;
-        margin-top: 1rem;
-    }
-
-    .profile-user-name {
-        font-size: 2.2rem;
-    }
-
-
-    .profile-bio {
-        font-size: 1.4rem;
-        margin-top: 1.5rem;
-    }
-
-    .profile-edit-btn,
-    .profile-bio {
-        flex-basis: 100%;
-    }
-
-
-}
-
-
-@supports (display: grid) {
-    .profile {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        grid-template-rows: repeat(3, auto);
-        grid-column-gap: 3rem;
-        align-items: center;
-    }
-
-    .profile-image {
-        grid-row: 1 / -1;
-    }
-
-    .profile-image,
-    .profile-user-settings,
-    .profile-stats,
-    .profile-bio
-    {
-        width: auto;
-        margin: 0;
-    }
-
-    @media (max-width: 40rem) {
-        .profile {
-            grid-template-columns: auto 1fr;
-            grid-row-gap: 1.5rem;
-        }
-
-        .profile-image {
-            grid-row: 1 / 2;
-        }
-
-        .profile-user-settings {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            grid-gap: 1rem;
-        }
-
-        .profile-stats,
-        .profile-bio {
-            grid-column: 1 / -1;
-        }
-
-        .profile-user-settings,
-        .profile-settings-btn,
-        .profile-bio,
-        .profile-stats {
-            margin: 0;
-        }
-    }
-}
 </style>
