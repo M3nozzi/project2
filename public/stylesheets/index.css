@@ -74,6 +74,7 @@ border: 1px solid rgba(255,255,255,0.5);
 -webkit-transition: all 0.2s;
 -moz-transition: all 0.2s;
 transition: all 0.2s;
+border-radius: 8px;
 }
 a.btn:hover {
 background: #d73851;
@@ -157,13 +158,12 @@ label {
 }
 
 /* Style the video: 100% width and height to cover the entire window */
-#myVideo {
+.myVideo {
     position: fixed;
     right: 0;
     bottom: 0;
     min-width: 100%;
     min-height: 100%;
-    filter: grayscale(0%);
   }
   
   /* Add some content at the bottom of the video/page */
@@ -173,7 +173,9 @@ label {
     padding: 20px;
   }
 
-  #myVideo:after{
+  .myVideo:after{
     position:absolute;
     background-color:rgba(0,0,0,.6);
   }
+
+  
