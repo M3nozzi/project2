@@ -1,6 +1,7 @@
 .mapPlaces {
     height: 500px;
     width: 100%;
+    border-radius: 8px;
 }
 
 .review-item {
