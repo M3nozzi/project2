@@ -1,14 +1,38 @@
-<span><a href="/places">Back</a></span><br>
-<h1 class="edit-h1">edit place</h1>
-<form class="edit-form"action="/place-edit?placeId={{_id}}" method="POST" enctype="multipart/form-data">
-  <label class='edit-label' for="name">Name:
-    <input class='edit-input' type="text" name="name" value="{{name}}">
-  </label><br>
-  {{!-- <label class='edit-label' for="type">Type:
-    <input class='edit-input' type="text" name="type" value="{{type}}">
-  </label><br> --}}
-  <label class="edit-label" for="type">Type:
-           <select name="type" value={{type}} id="" onchange="">
+<link rel="stylesheet" href="/stylesheets/profile.css" />
+<script src="https://kit.fontawesome.com/0cc4f904e8.js" crossorigin="anonymous"></script>
+<header>
+    <h2>Spot Sport</h2>
+  <nav class="header-nav">
+     <ul class="header-ul">
+        <li class="header-li">
+    <a  class="header-a" href="/">Home</a>
+    </li>
+    <li class="header-li">
+     <a class="header-a" href="/places">Places</a>
+    </li>
+    <li class="header-li">
+     <a class="header-a" href="/profile/{{_id}}">Profile</a>
+    </li>
+    <li class="header-li">
+     <a class="btn header-a" href="/logout" title="logout">Logout</a>
+     </li>
+     </ul>
+  </nav>
+</header>
+<br>
+<br>
+<br>
+<div id="form-main">
+  <div id="form-div">
+    <form class="edit-form" action="/place-edit?placeId={{_id}}" method="POST" enctype="multipart/form-data">
+      <p class="name">
+         <label class='edit-label' for="name">Name</label>
+         <input type="text" name="name" value="{{name}}" class="feedback-input" id="name">
+      </p>
+
+       <p class="type">
+         <label class='edit-label' for="type">Type</label>
+        <select name="type" value={{type}} id="" onchange="" class="feedback-input">
               <option value="General">General</option>
               <option value="Basketball">Basketball</option>
                 <option value="Football">Football</option>
@@ -19,21 +43,152 @@
                 <option value="Hiking">Hiking</option>
                 <option value="Cycling">Cycling</option>
             </select>
-  </label><br>
-
-   <label class='edit-label' for="address">Address:
-          <input  id="latitude" type="text" name="latitude" value="{{location.coordinates.[1]}}" hidden>
+      </p>
+      
+      <p class="address">
+        <label class='edit-label' for="address">Address</label>
+        <input  id="latitude" type="text" name="latitude" value="{{location.coordinates.[1]}}" hidden>
           <input id="longitude" type="text" name="longitude" value="{{location.coordinates.[0]}}" hidden>
-          <input id="address" type="address" name="address" value="{{address}}" required>
-  </label> 
-  <label  class='edit-label'for="description">Description:
-    <input type="text" name="description" value="{{description}}">
-  </label><br>
-<img src='{{path}}' alt='{{title}}'>
+          <input id="address" type="address" name="address" value="{{address}}" class="feedback-input" required>
+      </p>
+      
+      <p class="text">
+        <label class='edit-label' for="description">Description</label>
+         <input type="text" name="description" value="{{description}}" class="feedback-input">
+      </p>
+      <p class='photo'>
+      <label class='edit-label' for="photo">Change photo: </label>
+      <input type="file" name="photo" required>
+      </p>
+      <div class="submit">
+         <button type="submit" id="button-blue">EDIT</button>
+      </div>
+    </form>
+  </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
-  <label class='edit-label' for="photo">Change photo:
-    <input type="file" name="photo" required>
-  </label>
-  <br>
-  <button id="submit" type="submit">EDIT</button>
-</form>
+<style>
+html, body{ 
+  height:100%;
+  min-height:100%;
+}
+
+#feedback-page{
+	text-align:center;
+}
+
+#form-main{
+	width:100%;
+	float:left;
+	padding-top:0px;
+}
+
+#form-div {
+	background-color:rgba(72,72,72,0.4);
+	padding-left:35px;
+	padding-right:35px;
+	padding-top:35px;
+	padding-bottom:50px;
+	width: 450px;
+	float: left;
+	left: 50%;
+	position: absolute;
+  margin-top:30px;
+	margin-left: -260px;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+}
+.footer-div{
+  margin-top:550px;
+}
+.feedback-input {
+	color:#3c3c3c;
+	font-family: Helvetica, Arial, sans-serif;
+  font-weight:500;
+	font-size: 18px;
+	border-radius: 0;
+	line-height: 22px;
+	background-color: #fbfbfb;
+	padding: 13px 13px 13px 54px;
+	margin-bottom: 10px;
+	width:100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+  border: 3px solid rgba(0,0,0,0);
+}
+
+.feedback-input:focus{
+	background: #fff;
+	box-shadow: 0;
+	border: 3px solid #3498db;
+	color: #3498db;
+	outline: none;
+  padding: 13px 13px 13px 54px;
+}
+
+.focused{
+	color:#30aed6;
+	border:#30aed6 solid 3px;
+}
+
+
+
+input:hover, textarea:hover,
+input:focus, textarea:focus {
+	background-color:white;
+}
+
+#button-blue{
+	font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+	float:left;
+	width: 100%;
+	border: #fbfbfb solid 4px;
+	cursor:pointer;
+	background-color:#d73851;
+	color:white;
+	font-size:24px;
+	padding-top:22px;
+	padding-bottom:22px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+  margin-top:-4px;
+  font-weight:700;
+}
+
+#button-blue:hover{
+	background-color: rgba(0,0,0,0);
+	color: black;
+}
+	
+.submit:hover {
+	color: #3498db;
+}
+	
+
+@media only screen and (max-width: 580px) {
+	#form-div{
+		left: 3%;
+		margin-right: 3%;
+		width: 88%;
+		margin-left: 0;
+		padding-left: 3%;
+		padding-right: 3%;
+	}
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    line-height: 150%;
+    resize:vertical;
+}
+
+
+</style>
