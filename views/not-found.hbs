@@ -1,8 +1,36 @@
-<h1>404 Error</h1>
-<h2>This route does not exist on the app! Check if everything is ok!</h2>
+{{!-- <h1>404 Error</h1>
+<h2>This route does not exist on the app! Check if everything is ok!</h2> --}}
 
+<div class="container">
+<div class="video-div">
+ <video autoplay muted loop class="myVideo">
+  <source src="https://res.cloudinary.com/menozzi/video/upload/v1587399837/project2/GettyImages-870430458_dz37na.mp4" type="video/mp4">
+</video>
+</div>
 
-                            <a href="/"><button class="btn-nooo-text">Back home</button></a>
-                            
+ <div class="cover">
+    <div class="content-video">
+      <h1>404 Error</h1>
+      <h2>This route does not exist on the app! Check if everything is ok!</h2>
+      <a href="/"><button class="btn-nooo-text">Back home</button></a>
+    </div>
+</div>
+</div>
 
-            
+<style>
+    /* Style the video: 100% width and height to cover the entire window */
+.myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }
+  
+  /* Add some content at the bottom of the video/page */
+  .content-video {
+    position: fixed;
+    color: #f1f1f1;
+    padding: 20px;
+  }
+</style>

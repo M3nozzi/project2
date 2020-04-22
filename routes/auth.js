@@ -15,6 +15,11 @@ const bcryptSalt = 10;
 //cloudinary
 const uploadCloud = require('../config/cloudinary');
 
+//SIGNUP CONFIRMED
+router.get("/signupOk", (req, res) => {
+  res.render("signupOk")
+});
+
 //SIGNUP routes
 //signup GET
 router.get("/signup", (req, res, next) => {
@@ -62,7 +67,7 @@ console.log(req.body)
       if (err) {
         res.render("signup-form", { message: "Something went wrong" });
       } else {
-        res.redirect("/");
+        res.redirect("/signupOk");
       }
     });
   })

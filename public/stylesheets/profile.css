@@ -99,7 +99,7 @@ header {
 }
 
 @media all and (max-width:360px) {
-header .header-nav .header.li{
+header .header-nav .header.li {
   margin: 0 10px;
 }
 }
