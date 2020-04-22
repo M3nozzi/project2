@@ -68,6 +68,7 @@ border: 1px solid rgba(255,255,255,0.5);
 -webkit-transition: all 0.2s;
 -moz-transition: all 0.2s;
 transition: all 0.2s;
+border-radius: 8px;
 }
 a.btn:hover {
 background: white;
