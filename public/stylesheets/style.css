@@ -35,6 +35,21 @@
     color: red;
   }
 
+  html,body{
+    height:100%;
+    min-height:100%;
+  }
+
+.footer-div{
+  background-color:#545659;
+  color:white;
+  text-align: center;
+  font-size: 15px;
+  margin-top:50px;
+  margin-left:-8px;
+  width:100%;
+  position: absolute;
+}
 
 
  
