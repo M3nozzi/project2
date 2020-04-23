@@ -18,9 +18,12 @@
 <br>
 <br>
 
-{{!-- <img class="myImage" src="https://res.cloudinary.com/menozzi/image/upload/v1587477108/project2/pinAdd_ot0b6z.png"> --}}
+<div class="search">
+   <input id="filter" type="text" placeholder="Search by sport type">
+</div>
   
   <div class="cards-list" >
+
      <div class="card ">
   <div class="card_image"></div>
   <div class="card_title">
@@ -35,12 +38,14 @@
     <img class="img-card"src='{{path}}' alt='{{title}}'> 
   
    </div>
-  <div class="card_title title-white">
-    <p class="places-title"><a href="/places/{{_id}}">{{name}}</a></p>
+  <div class="card_title">
+    <h3 class="places-title"><a href="/places/{{_id}}">{{name}}</a></h3>
+    <p>{{type}}</p>
   </div>
   </div>
    {{/each}}
-
+</div>
+  </div>
 </div>
 <br>
 <br>
@@ -48,7 +53,48 @@
 
 <link rel="stylesheet" href="/stylesheets/places.css" />
 
+<script>
+  $(function(){ 
+
+  $("#filter").keyup(function(){
+    var texto = $(this).val();
+    
+    $(".bloco").each(function(){
+      var result = $(this).text().toUpperCase().indexOf(' '+texto.toUpperCase());
+      
+      if(result < 0) {
+        $(this).fadeOut();
+      }else {
+        $(this).fadeIn();
+      }
+    }); 
+
+  });
+
+});
+</script>
+
+
+
+
+
+
 <style>
+
+  .search {
+  padding: 10px;
+  width: 100%;
+  background-color:white;
+  margin-bottom: 20px;
+}
+  .search input {
+    display: block;
+    width: 70%;
+    height: 30px;
+    padding: 0 5px;
+    margin: 0 auto;
+  }
+
 
 .a-delete{
   text-decoration:none;
@@ -124,10 +170,11 @@ font-size: 80px;
   border-radius: 0px 0px 30px 30px;
  font-family:'Montserrat', sans-serif;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 10px;
   margin-top: -120px;
   height: 40px;
   text-decoration:none;
+  color:white;
 }
 
 .card:hover {
@@ -141,6 +188,7 @@ font-size: 80px;
 font-family:'Montserrat', sans-serif;
 color:white;
 text-decoration:none;
+font-size: 15px;
 }
 
 .places-title {

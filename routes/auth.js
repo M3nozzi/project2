@@ -15,10 +15,21 @@ const bcryptSalt = 10;
 //cloudinary
 const uploadCloud = require('../config/cloudinary');
 
-//SIGNUP CONFIRMED
-router.get("/signupOk", (req, res) => {
-  res.render("signupOk")
-});
+//ROLES CONTROL
+
+const checkRoles = (role) => {
+  return (req, res, next) => {
+    if (req.isAuthenticated() && req.user.role === role) {
+      return next();
+    } else {
+      req.logout();
+      res.redirect('/login')
+    }
+  }
+}
+const checkGuest = checkRoles('GUEST');
+const checkAdmin = checkRoles('ADMIN');
+
 
 //SIGNUP routes
 //signup GET
@@ -38,14 +49,14 @@ router.post("/signup", uploadCloud.single('photo'), (req, res, next) => {
  
 console.log(req.body)
   if (username === "" || password === "") {
-    res.render("signup-form", { message: "Indicate username and password" });
+    res.render("signup-form", { errorMessage: "please type username and password" });
     return;
   }
 
   User.findOne({ username })
   .then(user => {
     if (user !== null) {
-      res.render("signup-form", { message: "The username already exists" });
+      res.render("signup-form", { errorMessage: "The username already exists" });
       return;
     }
 
@@ -65,9 +76,9 @@ console.log(req.body)
 
     newUser.save((err) => {
       if (err) {
-        res.render("signup-form", { message: "Something went wrong" });
+        res.render("signup-form", { errorMessage: "Something went wrong" });
       } else {
-        res.redirect("/signupOk");
+        res.redirect("/places");
       }
     });
   })
@@ -250,7 +261,7 @@ router.post('/place-review', (req, res, next) => {
 
   // implement the delete route and redirect to /places
 
-router.get('/place-delete/:placeId', (req, res) => {
+router.get('/place-delete/:placeId',checkRoles('ADM'), (req, res) => {
     const {
       placeId
     } = req.params;
