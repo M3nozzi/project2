@@ -226,40 +226,6 @@ router.get('/places/:id', (req, res) => {
 
 //PLACE REVIEW
 
-// router.get('/place-review/:placeId', (req, res) => {
-//   console.log(req.params)
-//   const {
-//     placeId
-//   } = req.params;
- 
-//   Place
-//     .findById(placeId)
-//     .then(place => {
-      
-//       res.render('place-review', place);
-//     })
-//     .catch(error => console.log(error));
-// });
-
-
-// router.post('/place-review', (req, res, next) => {
-//   console.log(req.body)
-//   const {username, comments} = req.body;
-//   const {
-//     placeId
-//   } = req.query;
-  
-//   Place.findByIdAndUpdate(placeId, { $push: { reviews: { username, comments }}})
-//     .then(place => {
-//     console.log(placeId)
-//     res.redirect('places')
-//   })
-//   .catch((error) => {
-//     console.log(error)
-//   })
-// });
-
-
 router.get('/place-review/:placeId', (req, res) => {
   console.log(req.params)
   const {
@@ -276,23 +242,22 @@ router.get('/place-review/:placeId', (req, res) => {
 });
 
 
-router.post('/place-review', ensureLogin.ensureLoggedIn(),(req, res, next) => {
-  const {comments} = req.body;
+router.post('/place-review', (req, res, next) => {
+  console.log(req.body)
+  const { comments } = req.body;
   const {
     placeId
   } = req.query;
   
   Place.findByIdAndUpdate(placeId, { $push: { reviews: { username:req.user.username, comments }}})
-    .then(response => {
-      console.log(response);
+    .then(place => {
+    console.log(placeId)
     res.redirect('places')
   })
   .catch((error) => {
     console.log(error)
   })
 });
-
-
 
 
   // implement the delete route and redirect to /places

@@ -1,11 +1,192 @@
-<p>Add a review</p>
-<form action="/place-review?placeId={{_id}}" method="post">
-  {{!-- <label for="">Username:</label>
-  <input type="text"  name="username"> --}}
-  <label for="">Comments:</label>
-  <textarea type="text" name="comments"></textarea>
+<link rel="stylesheet" href="/stylesheets/profile.css" />
+<script src="https://kit.fontawesome.com/0cc4f904e8.js" crossorigin="anonymous"></script>
+<header>
+    <h2>Spot Sport</h2>
+  <nav class="header-nav">
+     <ul class="header-ul">
+        <li class="header-li">
+    <a  class="header-a" href="/">Home</a>
+    </li>
+    <li class="header-li">
+     <a class="header-a" href="/places">Places</a>
+    </li>
+    <li class="header-li">
+     <a class="header-a" href="/profile/{{_id}}">Profile</a>
+    </li>
+    <li class="header-li">
+     <a class="btn header-a" href="/logout" title="logout">Logout</a>
+     </li>
+     </ul>
+  </nav>
+</header>
+<br>
+<br>
+<br>
 
-  <button type="submit">ADD</button>
-</form>
+
+<div id="form-main">
+  <div class="panel">
+  <div id="form-div">
+      <form action="/place-review?placeId={{_id}}" method="post">
+      <p class="comment">   
+      <h3>Add a review about {{name}}</h3>
+       <img class="panel__avatar" src='{{path}}' alt='{{title}}'alt="avatar">
+         <textarea name="comments" class="feedback-input" id="comments" placeholder="Comment"></textarea>
+      </p>
+      <div class="submit">
+         <button type="submit" id="button-blue">SEND</button>
+      </div>
+      </form>
+</div>
+</div>
+</div>
+
+
+
+<style>
+ @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+html, body{ 
+  height:100%;
+  min-height:100%;
+}
+
+#feedback-page{
+	text-align:center;
+}
+
+#form-main{
+	width:100%;
+	float:left;
+	padding-top:0px;
+}
+
+#form-div {
+	background-color:rgba(72,72,72,0.4);
+	padding-left:35px;
+	padding-right:35px;
+	padding-top:35px;
+	padding-bottom:50px;
+	width: 450px;
+	float: left;
+	left: 50%;
+	position: absolute;
+  margin-top:30px;
+	margin-left: -260px;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+}
+.footer-div{
+  margin-top:550px;
+}
+.feedback-input {
+	color:#3c3c3c;
+	font-family: 'Montserrat', sans-serif;
+  font-weight:500;
+	font-size: 18px;
+	border-radius: 0;
+	line-height: 22px;
+	background-color: #fbfbfb;
+	margin-bottom: 10px;
+	width:100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+  border: 3px solid rgba(0,0,0,0);
+}
+
+.feedback-input:focus{
+	background: #fff;
+	box-shadow: 0;
+	border: 3px solid #3498db;
+	color: #3498db;
+	outline: none;
+  padding: 13px 13px 13px 13px;
+}
+
+.focused{
+	color:#30aed6;
+	border:#30aed6 solid 3px;
+}
+
+h3{
+    color:#d73851;
+    font-family: 'Montserrat', sans-serif;;
+}
+
+input:hover, textarea:hover,
+input:focus, textarea:focus {
+	background-color:white;
+}
+
+#button-blue{
+	font-family: 'Montserrat', sans-serif;
+	float:left;
+	width: 30%;
+	border: #fbfbfb solid 2px;
+	cursor:pointer;
+	background-color:#d73851;
+	color:white;
+	font-size:12px;
+	padding-top:5px;
+	padding-bottom:5px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+  margin-top:-4px;
+  font-weight:500;
+  margin-left:30%;
+  border-radius: 8%;
+}
+
+#button-blue:hover{
+	background-color:white;
+	color:#d73851;
+  border: #d73851 solid 2px;
+}
+	
+	
+.submit:hover {
+	color: #3498db;
+}
+	
+
+@media only screen and (max-width: 580px) {
+	#form-div{
+		left: 3%;
+		margin-right: 3%;
+		width: 88%;
+		margin-left: 0;
+		padding-left: 3%;
+		padding-right: 3%;
+	}
+}
+
+
+// --- PANEL ---
+
+.panel {
+  background: #35363C;
+  margin: 40px auto;
+  width: 300px;
+  border: 1px solid #46464C;
+  border-radius: 3px;
+  padding: 40px;
+  box-shadow: 1px 3px #26272C;
+}
+
+.panel__avatar {
+  background: #fff;
+  border: 0px solid rgba(63, 51, 55, 0.931);
+  width: 100px;
+  height: 100px;
+  border-radius: 8%;
+  margin: 0 auto 40px;
+  margin-top:30px;
+  display: block;
+}
+
+</style>
 
 
