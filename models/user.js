@@ -24,6 +24,11 @@ const userSchema = new Schema({
   email: String,
   path: String,
   originalName: String,
+  role: {
+    type: String,
+    enum: ['GUEST', 'ADMIN'],
+    default: 'GUEST'
+  },
 },
 //   {
 //     timestamps: true

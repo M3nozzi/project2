@@ -13,7 +13,11 @@ const placesSchema = new Schema({
         coordinates: [Number]
     },//closes location
     path: String, 
-    originalName: String,
+  originalName: String,
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
     reviews:[ 
         {
           username: String,
