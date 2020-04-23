@@ -18,9 +18,11 @@
 <br>
 <br>
 
-<div class="search">
-   <input id="filter" type="text" placeholder="Search by sport type">
-</div>
+<form action="/places" method="POST" class="search-places">
+   <input id="search" type="text" name="search" placeholder="Search by sport type">
+   <button type="submit">search</button>
+</form>
+
   
   <div class="cards-list" >
 
@@ -40,7 +42,7 @@
    </div>
   <div class="card_title">
     <h3 class="places-title"><a href="/places/{{_id}}">{{name}}</a></h3>
-    <p>{{type}}</p>
+    <p class="type-name">{{type}}</p>
   </div>
   </div>
    {{/each}}
@@ -53,26 +55,18 @@
 
 <link rel="stylesheet" href="/stylesheets/places.css" />
 
-<script>
-  $(function(){ 
+{{!-- <script>
+  const searchBar = document.forms['search-places'].querySelector('input');
+  searchBar.addEventListener('keyup', function(e){
 
-  $("#filter").keyup(function(){
-    var tipo = $(this).val();
-    
-    $(".card").each(function(){
-      var result = $(this).text().toUpperCase().indexOf(' '+tipo.toUpperCase());
-      
-      if(result < 0) {
-        $(this).fadeOut();
-      }else {
-        $(this).fadeIn();
-      }
-    }); 
+    const term = e.target.value.toLowerCase();
+    const places = list.getElementsByTagName("p");
+    Array.from(places).forEach(function(place){
 
-  });
+    })
 
-});
-</script>
+  })
+</script> --}}
 
 
 
@@ -81,13 +75,13 @@
 
 <style>
 
-  .search {
+  .search-places {
   padding: 10px;
   width: 100%;
   background-color:white;
   margin-bottom: 20px;
 }
-  .search input {
+  .search-places input {
     display: block;
     width: 70%;
     height: 30px;

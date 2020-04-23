@@ -113,6 +113,9 @@ router.get("/places", ensureLogin.ensureLoggedIn(), (req, res) => {
     .catch(error => console.log(error));
 });
 
+
+
+
 //place details
 router.get('/places/:id', (req, res) => {
     Place
