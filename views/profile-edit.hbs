@@ -88,13 +88,13 @@ html, body{
 }
 .feedback-input {
 	color:#3c3c3c;
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: 'Montserrat', sans-serif;
   font-weight:500;
 	font-size: 18px;
 	border-radius: 0;
 	line-height: 22px;
 	background-color: #fbfbfb;
-	padding: 13px 13px 13px 54px;
+	padding: 13px 13px 13px 13px;
 	margin-bottom: 10px;
 	width:100%;
 	-webkit-box-sizing: border-box;
@@ -102,6 +102,7 @@ html, body{
 	-ms-box-sizing: border-box;
 	box-sizing: border-box;
   border: 3px solid rgba(0,0,0,0);
+  align-items: center;
 }
 
 .feedback-input:focus{
@@ -110,7 +111,7 @@ html, body{
 	border: 3px solid #3498db;
 	color: #3498db;
 	outline: none;
-  padding: 13px 13px 13px 54px;
+  padding: 13px 13px 13px 13px;
 }
 
 .focused{
@@ -126,27 +127,31 @@ input:focus, textarea:focus {
 }
 
 #button-blue{
-	font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	float:left;
-	width: 100%;
-	border: #fbfbfb solid 4px;
+	width: 30%;
+	border: #fbfbfb solid 2px;
 	cursor:pointer;
 	background-color:#d73851;
 	color:white;
-	font-size:24px;
-	padding-top:22px;
-	padding-bottom:22px;
+	font-size:12px;
+	padding-top:5px;
+	padding-bottom:5px;
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
   margin-top:-4px;
-  font-weight:700;
+  font-weight:500;
+  margin-left:30%;
+  border-radius: 8%;
 }
 
 #button-blue:hover{
-	background-color: rgba(0,0,0,0);
-	color: black;
+	background-color:white;
+	color:#d73851;
+  border: #d73851 solid 2px;
 }
+	
 	
 .submit:hover {
 	color: #3498db;
