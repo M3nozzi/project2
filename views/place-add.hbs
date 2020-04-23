@@ -1,4 +1,4 @@
-<span><a href="/places">Back</a></span><br>
+{{!-- <span><a href="/places">Back</a></span><br>
 <h1>Add a new Spot Sport</h1>
 
 <form action="/place-add" method="POST" enctype="multipart/form-data">
@@ -41,4 +41,189 @@
   <br>
   <br>
   <button id="addButton" type="submit">ADD</button>
-</form>
+</form> --}}
+
+<link rel="stylesheet" href="/stylesheets/profile.css" />
+<script src="https://kit.fontawesome.com/0cc4f904e8.js" crossorigin="anonymous"></script>
+<header>
+    <h2>Spot Sport</h2>
+  <nav class="header-nav">
+     <ul class="header-ul">
+        <li class="header-li">
+    <a  class="header-a" href="/">Home</a>
+    </li>
+    <li class="header-li">
+     <a class="header-a" href="/places">Places</a>
+    </li>
+    <li class="header-li">
+     <a class="header-a" href="/profile/{{_id}}">Profile</a>
+    </li>
+    <li class="header-li">
+     <a class="btn header-a" href="/logout" title="logout">Logout</a>
+     </li>
+     </ul>
+  </nav>
+</header>
+<br>
+<br>
+<br>
+
+<div id="form-main">
+  <div id="form-div">
+      <form action="/place-add" method="POST" enctype="multipart/form-data">
+      <p class="name">
+         <input type="text" name="name" class="feedback-input" id="name" placeholder="Place's name" required>
+      </p>
+      <p class="type"> 
+      <label class="edit-label" for="type">Type:
+            <select name="type" id="" onchange="">
+              <option value="General">General</option>
+              <option value="Basketball">Basketball</option>
+                <option value="Football">Football</option>
+                <option value="Gym">Gym</option>
+                <option value="Volley">Volley</option>
+                <option value="Tennis">Tennis</option>
+                <option value="Trekking">Trekking</option>
+                <option value="Hiking">Hiking</option>
+                 <option value="Cycling">Cycling</option>
+            </select>
+  </label>
+  </p>
+  <br>
+      <p class="address">
+        <input id="latitude" type="text" name="latitude" hidden>
+        <input id="longitude" type="text" name="longitude" hidden>
+        <input id="address" type="address" name="address" placeholder="Address, number, City"  class="feedback-input" required>
+      </p>
+      <p class="description">
+      <input type="text" name="description" class="feedback-input" placeholder="Description" required>
+      </p>
+      <p class="text">
+         <input type="file" name="photo" required>
+      </p>
+      <div class="submit">
+         <button type="submit" id="button-blue">ADD</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+html, body{ 
+  height:100%;
+  min-height:100%;
+}
+
+#feedback-page{
+	text-align:center;
+}
+
+#form-main{
+	width:100%;
+	float:left;
+	padding-top:0px;
+}
+
+#form-div {
+	background-color:rgba(72,72,72,0.4);
+	padding-left:35px;
+	padding-right:35px;
+	padding-top:35px;
+	padding-bottom:50px;
+	width: 450px;
+	float: left;
+	left: 50%;
+	position: absolute;
+  margin-top:30px;
+	margin-left: -260px;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+}
+.footer-div{
+  margin-top:550px;
+}
+.feedback-input {
+	color:#3c3c3c;
+	font-family: 'Montserrat', sans-serif;
+  font-weight:500;
+	font-size: 18px;
+	border-radius: 0;
+	line-height: 22px;
+	background-color: #fbfbfb;
+	padding: 13px 13px 13px 13px;
+	margin-bottom: 10px;
+	width:100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+  border: 3px solid rgba(0,0,0,0);
+  align-items: center;
+}
+
+.feedback-input:focus{
+	background: #fff;
+	box-shadow: 0;
+	border: 3px solid #3498db;
+	color: #3498db;
+	outline: none;
+  padding: 13px 13px 13px 13px;
+}
+
+.focused{
+	color:#30aed6;
+	border:#30aed6 solid 3px;
+}
+
+
+
+input:hover, textarea:hover,
+input:focus, textarea:focus {
+	background-color:white;
+}
+
+#button-blue{
+	font-family: 'Montserrat', sans-serif;
+	float:left;
+	width: 30%;
+	border: #fbfbfb solid 2px;
+	cursor:pointer;
+	background-color:#d73851;
+	color:white;
+	font-size:12px;
+	padding-top:5px;
+	padding-bottom:5px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+  margin-top:-4px;
+  font-weight:500;
+  margin-left:30%;
+  border-radius: 8%;
+}
+
+#button-blue:hover{
+	background-color:white;
+	color:#d73851;
+  border: #d73851 solid 2px;
+}
+	
+	
+.submit:hover {
+	color: #3498db;
+}
+	
+
+@media only screen and (max-width: 580px) {
+	#form-div{
+		left: 3%;
+		margin-right: 3%;
+		width: 88%;
+		margin-left: 0;
+		padding-left: 3%;
+		padding-right: 3%;
+	}
+}
+  </style>
