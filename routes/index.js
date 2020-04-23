@@ -26,8 +26,8 @@ router.get('/api', (req, res, next) => {
 
 router.post('/places',(req, res) => {
   let {search} = req.body;
-  console.log(search)
   let typeArr = ["Basketball", "Football", "Gym", "Volley", "Tennis", "Trekking", "Hiking", "Cycling"];
+  search = search.toLowerCase();
   if (!search) {
     Place
     .find() 
@@ -40,16 +40,19 @@ router.post('/places',(req, res) => {
   })
     .catch(error => console.log(error));
   }
-  Place
-    .find({ type:search }) 
-    .sort({ name: 1 })
-    .then(places => {
-    console.log(places)
-    res.render('places', {
-      user: req.user, places
-    });
-  })
-    .catch(error => console.log(error));
+  
+  if (search) {
+    Place
+      .find({ type: search })
+      .sort({ name: 1 })
+      .then(places => {
+        console.log(places)
+        res.render('places', {
+          user: req.user, places
+        });
+      })
+      .catch(error => console.log(error));
+  }
 });
 
 module.exports = router;
