@@ -7,7 +7,7 @@ let center = {
   function startMap() {
     const map = new google.maps.Map(
       document.getElementById('map'), {
-        zoom: 12,
+        zoom: 11,
         center: center,
         styles: [
           {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
