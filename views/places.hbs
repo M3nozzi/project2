@@ -1,3 +1,4 @@
+<script src="https://kit.fontawesome.com/0cc4f904e8.js" crossorigin="anonymous"></script>
 <header>
      <p class="header-p">{{#if user}}Hey <b>{{user.firstName}}</b>, {{/if}}Welcome to SpotSports!</p>
   <nav class="header-nav">
@@ -17,13 +18,13 @@
 <br>
 <br>
 <br>
-
+<div "div-search">
 <form action="/places" method="POST" class="search-places">
    <input id="search" type="text" name="search" placeholder="Search by sport type">
-   <button type="submit">search</button>
+   <button type="submit"><i class="fas fa-search-location"></i></button>
 </form>
+</div>
 
-  
   <div class="cards-list" >
 
      <div class="card ">
@@ -42,7 +43,7 @@
    </div>
   <div class="card_title">
     <h3 class="places-title"><a href="/places/{{_id}}">{{name}}</a></h3>
-    <p class="type-name">{{type}}</p>
+    <p class="type-name" hidden>{{type}}</p>
   </div>
   </div>
    {{/each}}
@@ -55,26 +56,16 @@
 
 <link rel="stylesheet" href="/stylesheets/places.css" />
 
-{{!-- <script>
-  const searchBar = document.forms['search-places'].querySelector('input');
-  searchBar.addEventListener('keyup', function(e){
-
-    const term = e.target.value.toLowerCase();
-    const places = list.getElementsByTagName("p");
-    Array.from(places).forEach(function(place){
-
-    })
-
-  })
-</script> --}}
-
-
 
 
 
 
 <style>
 
+.div-search{
+  display:flex;
+  flex-direction: row;
+}
   .search-places {
   padding: 10px;
   width: 100%;
@@ -83,7 +74,7 @@
 }
   .search-places input {
     display: block;
-    width: 70%;
+    width: 40%;
     height: 30px;
     padding: 0 5px;
     margin: 0 auto;
