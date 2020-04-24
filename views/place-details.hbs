@@ -4,9 +4,9 @@
     <h2>Spot Sport</h2>
   <nav class="header-nav">
      <ul class="header-ul">
-        <li class="header-li">
+        {{!-- <li class="header-li">
     <a  class="header-a" href="/">Home</a>
-    </li>
+    </li> --}}
     <li class="header-li">
      <a class="header-a" href="/places">Spots</a>
     </li>
@@ -47,11 +47,16 @@
 </div>
 
 <div class="div-review">
+{{!-- {{#with places}}
+<a class="btn-createReview" href="/place-review/{{_id}}"><i class="far fa-comment-dots"></i></a>
+{{/with}} --}}
+<div class="background-div">
+<div class="test">
+<h2>Reviews</h2>
 {{#with places}}
 <a class="btn-createReview" href="/place-review/{{_id}}"><i class="far fa-comment-dots"></i></a>
 {{/with}}
-<div class="background-div">
-<h2>Reviews</h2>
+</div>
 {{#each places.reviews}}
 <div class="review-item">
   <p>{{comments}}</p>
@@ -64,8 +69,9 @@
 
 <style>
 
-    .btn-createReview{
-        margin-left:1170px;
+    .test{
+            display:flex;
+            flex-direction: row;
     }
 
     .div-icon{
@@ -74,8 +80,14 @@
         margin-bottom: -30px;
     }
     i{
-        color:black;
+        color:rgba(0, 0, 0, 0.399);
        
+    }
+    .fa-comment-dots{
+        color:white;
+        margin-top:15px;
+        margin-left:20px;
+        font-size:20px;
     }
     i:hover{
         color:#d73851;
@@ -95,6 +107,7 @@
       margin-top:10px;
     }
     .review-item{
+        font-size: 15px;
         margin:20px;
        color: white;
        text-align:justify;
