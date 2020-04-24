@@ -121,7 +121,7 @@ let center = {
             });    
         map.panToBounds(bounds);   
         }
-          else if (page === "places") {
+          else if (page === "places" || page === "places#_=_") {
           
             let contentString = `<div class="inforWindow"><h1 class="element-name">${element.name}</h1><h3 class="element-address">${element.address}</h3><img class="element-img" src="${element.path}"><br><a class="element-a" href="/places/${element._id}"><b>More Details</b></a></div>`;
 
