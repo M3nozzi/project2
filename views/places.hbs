@@ -18,12 +18,20 @@
 <br>
 <br>
 <br>
-<div "div-search">
+{{!-- <div "div-search">
 <form action="/places" method="POST" class="search-places">
    <input id="search" type="text" name="search" placeholder="Search by sport type">
    <button type="submit"><i class="fas fa-search-location"></i></button>
 </form>
-</div>
+</div> --}}
+
+    <form action="/places" method="POST" class="flex-form">
+      <label for="from">
+        <i class="ion-location"></i>
+      </label>
+      <input id="search" type="search" name="search" placeholder="Search by sport type">
+      <input type="submit" value="Search">
+    </form>
 
   <div class="cards-list" >
 
@@ -62,11 +70,7 @@
 
 <style>
 
-.div-search{
-  display:flex;
-  flex-direction: row;
-}
-  .search-places {
+  {{!-- .search-places {
   padding: 10px;
   width: 100%;
   background-color:white;
@@ -78,7 +82,7 @@
     height: 30px;
     padding: 0 5px;
     margin: 0 auto;
-  }
+  } --}}
 
 
 .a-delete{
@@ -116,11 +120,14 @@
 
 .places-titleADD a{
 font-family:'Montserrat', sans-serif;
-color:black;
+color:rgba(60, 49, 49, 0.269);
 text-decoration:none;
 font-size: 80px;
 }
 
+.places-titleADD a:hover{
+color:black;
+}
   .cards-list {
   width: 100%;
   display: flex;
@@ -182,11 +189,65 @@ font-size: 15px;
   margin-top: 50px;
 }
 
+.flex-form input[type="submit"] {
+  background: #ef3f5a;
+  border: 1px solid #ef3f5a;
+  color: #fff;
+  padding: 0 30px;
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.flex-form input[type="submit"]:hover {
+  background: #d73851;
+  border: 1px solid #d73851;
+}
+
+.flex-form {
+  display: -webkit-box;
+  display: flex;
+  z-index: 10;
+  position: relative;
+  width: 500px;
+  box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.flex-form > * {
+  border: 0;
+  padding: 0 0 0 10px;
+  background: #fff;
+  line-height: 50px;
+  font-size: 1rem;
+  border-radius: 0;
+  outline: 0;
+  -webkit-appearance: none;
+}
+
+input[type="search"] {
+  flex-basis: 500px;
+}
+
 @media all and (max-width: 500px) {
   .card-list {
     /* On small screens, we are no longer using row direction but column */
     flex-direction: column;
   }
+ .flex-form {
+    width: 100%;
+  }
+
+  input[type="search"] {
+    flex-basis: 100%;
+  }
+
+  .flex-form > * {
+    font-size: 0.9rem;
+  }
+
+
+
 }
 </style>
 

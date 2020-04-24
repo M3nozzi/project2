@@ -33,9 +33,9 @@ const checkAdmin = checkRoles('ADMIN');
 
 //SIGNUP routes
 //signup GET
-router.get("/signup", (req, res, next) => {
-  res.render("signup-form");
-});
+// router.get("/signup", (req, res, next) => {
+//   res.render("signup-form");
+// });
 
 //signup POST
 router.post("/signup", uploadCloud.single('photo'), (req, res, next) => {
@@ -49,20 +49,28 @@ router.post("/signup", uploadCloud.single('photo'), (req, res, next) => {
  
 console.log(req.body)
   if (username === "" || password === "") {
-    res.render("signup-form", { errorMessage: "please type username and password" });
+    res.render("/login", {errorMessage: "please type username and password" });
     return;
   }
 
-  User.findOne({ username })
+  User.findOne({ $or: [{ username }, { email }] })
   .then(user => {
     if (user !== null) {
-      res.render("signup-form", { errorMessage: "The username already exists" });
+      res.render("/login", {errorMessage: "The username or email already exists, please signup again" });
       return;
     }
 
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
 
+    // let path = '';
+    // if (req.file) {
+    //   path = req.file.url;
+    // } 
+
+    // else {
+    //   path = 'https://res.cloudinary.com/menozzi/image/upload/v1587091798/project2/tux.png.png';
+    // }
       const newUser = new User({
         firstName,
         lastName,
@@ -76,9 +84,9 @@ console.log(req.body)
 
     newUser.save((err) => {
       if (err) {
-        res.render("signup-form", { errorMessage: "Something went wrong" });
+        res.render("/login", { errorMessage: "Something went wrong" });
       } else {
-        res.redirect("/places");
+        res.redirect("places");
       }
     });
   })
@@ -160,7 +168,8 @@ router.get('/places/:id', (req, res) => {
         description,
         type,
         address,
-        location,
+      location,
+        owner:req.user._id,
         path: req.file.url,
         originalName: req.file.originalname
       })
