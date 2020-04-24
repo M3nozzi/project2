@@ -10,17 +10,22 @@
 				<a href="/auth/google" class="social"><i class="fab fa-google"></i></a>
        
 			</div>
-			<input id="firstName" type="text" name="firstName" placeholder="Vito Corleone" required>
+			<input id="firstName" type="text" name="firstName" placeholder="Linus Torvalds" required>
       {{!-- <input id="lastName" type="text" name="lastName" placeholder="Corleone" required> --}}
-      <input id="username" type="text" name="username" placeholder="vito.corleone" required>
-			<input id="email" type="text" name="email" placeholder="vito@corleone.com" required>
+      <input id="username" type="text" name="username" placeholder="linus.torvalds" required>
+			<input id="email" type="text" name="email" placeholder="linus@linux.com" required>
 			<input id="password" type="password" name="password" placeholder="********" required>
-      <input type="file" name="photo" id="photo" required>
+      <input type="file" name="photo" id="photo"required>
+      {{#if errorMessage}}
+        <div class="error-message">
+      {{errorMessage}}
+        </div>
+      {{/if}}
 			<button>Sign Up</button>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
-		<form action="/login" method="post">
+		<form action="/login" method="POST">
 			<h1>Log in</h1>
 			<div class="social-container">
 				<a href="/auth/facebook" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -29,6 +34,9 @@
 			<span>or use your account</span>
 			<input type="username" name="username" placeholder="username" />
 			<input type="password" name="password" placeholder="Password" />
+      {{#if errorMessage}}
+      <div class="error-message">{{errorMessage}}</div>
+      {{/if}}
 			<button>Log In</button>
 		</form>
 	</div>
