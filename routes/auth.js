@@ -436,13 +436,14 @@ router.get("/auth/facebook",
   // one way back from facebook
 router.get("/auth/facebook/callback",
   passport.authenticate("facebook", {
-    successRedirect: "/places",
+    successRedirect: "/test",
     failureRedirect: "/login"
   }),
 );
 
 
-router.get("/places#_=_", (req, res) => {
+router.get("/test", (req, res) => {
+  console.log("testtttt")
   res.redirect("/places")
 })
 
