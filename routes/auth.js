@@ -271,11 +271,11 @@ router.post('/place-review', (req, res, next) => {
 
   // implement the delete route and redirect to /places
 
-router.get('/place-delete/:placeId',checkRoles('ADM'), (req, res) => {
+router.get('/place-delete/:placeId',checkRoles('ADMIN'), (req, res) => {
     const {
       placeId
     } = req.params;
-  
+   
     Place.findByIdAndRemove(placeId).then(response => {
       res.redirect('/places');
     }).catch(error => console.log(error));
@@ -441,6 +441,10 @@ router.get("/auth/facebook/callback",
   }),
 );
 
+
+router.get("/places#_=_", (req, res) => {
+  res.redirect("/places")
+})
 
 //LOGOUT
   router.get("/logout", (req, res) => {
